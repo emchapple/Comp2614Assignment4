@@ -14,9 +14,33 @@ namespace Comp2614Assignment4
         [STAThread]
         static void Main()
         {
+            BankAccount.initialize();
+            Customer customer = createCustomer();
+ 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            Application.Run(new FormMain(customer));
+
         }
+
+        private static Customer createCustomer()
+        {
+            Customer customer = new Customer();
+            customer.FirstName = "Freida";
+            customer.LastName = "Franklin";
+
+            decimal savingsAccountBalance = 2000m;
+            SavingsAccount savingsAccount = new SavingsAccount(savingsAccountBalance);
+           
+            customer.AddBankAccount(savingsAccount);
+
+            decimal creditLimit = 10000m;
+            decimal creditLimitBalance = 3456m;
+            CreditLine creditLineAccount = new CreditLine(creditLimit, creditLimitBalance);
+            
+            customer.AddBankAccount(creditLineAccount);
+            return customer;
+        }  
+
     }
 }

@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.listViewAccountsDisplay = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.buttonDeposit = new System.Windows.Forms.Button();
             this.buttonWithdraw = new System.Windows.Forms.Button();
@@ -43,32 +39,12 @@
             // 
             // listViewAccountsDisplay
             // 
-            this.listViewAccountsDisplay.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
             this.listViewAccountsDisplay.Location = new System.Drawing.Point(58, 46);
             this.listViewAccountsDisplay.Name = "listViewAccountsDisplay";
             this.listViewAccountsDisplay.Size = new System.Drawing.Size(727, 162);
             this.listViewAccountsDisplay.TabIndex = 0;
             this.listViewAccountsDisplay.UseCompatibleStateImageBehavior = false;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Account Name";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Current Balance";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Credit Limit";
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Available Funds";
+            this.listViewAccountsDisplay.View = System.Windows.Forms.View.Details;
             // 
             // tableLayoutPanelMain
             // 
@@ -123,6 +99,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Transfer Funds";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -144,6 +121,7 @@
             this.Controls.Add(this.listViewAccountsDisplay);
             this.Name = "FormMain";
             this.Text = "Accounts For: <Customer>";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -152,15 +130,11 @@
         #endregion
 
         private System.Windows.Forms.ListView listViewAccountsDisplay;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
         private System.Windows.Forms.Button buttonDeposit;
         private System.Windows.Forms.Button buttonWithdraw;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        public System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }
 
