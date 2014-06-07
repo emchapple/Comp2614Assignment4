@@ -32,8 +32,8 @@
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.buttonDeposit = new System.Windows.Forms.Button();
             this.buttonWithdraw = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonTransferFunds = new System.Windows.Forms.Button();
+            this.buttonTransactionHistory = new System.Windows.Forms.Button();
             this.tableLayoutPanelMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,8 +56,8 @@
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelMain.Controls.Add(this.buttonDeposit, 0, 0);
             this.tableLayoutPanelMain.Controls.Add(this.buttonWithdraw, 2, 0);
-            this.tableLayoutPanelMain.Controls.Add(this.button3, 4, 0);
-            this.tableLayoutPanelMain.Controls.Add(this.button4, 4, 2);
+            this.tableLayoutPanelMain.Controls.Add(this.buttonTransferFunds, 4, 0);
+            this.tableLayoutPanelMain.Controls.Add(this.buttonTransactionHistory, 4, 2);
             this.tableLayoutPanelMain.Location = new System.Drawing.Point(58, 227);
             this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
             this.tableLayoutPanelMain.RowCount = 3;
@@ -89,28 +89,28 @@
             this.buttonWithdraw.Text = "Withdraw";
             this.buttonWithdraw.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonTransferFunds
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(545, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(179, 38);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Transfer Funds";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.buttonTransferFunds.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonTransferFunds.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTransferFunds.Location = new System.Drawing.Point(545, 3);
+            this.buttonTransferFunds.Name = "buttonTransferFunds";
+            this.buttonTransferFunds.Size = new System.Drawing.Size(179, 38);
+            this.buttonTransferFunds.TabIndex = 2;
+            this.buttonTransferFunds.Text = "Transfer Funds";
+            this.buttonTransferFunds.UseVisualStyleBackColor = true;
+            this.buttonTransferFunds.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // buttonTransactionHistory
             // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(545, 69);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(179, 39);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Transaction History";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonTransactionHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonTransactionHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTransactionHistory.Location = new System.Drawing.Point(545, 69);
+            this.buttonTransactionHistory.Name = "buttonTransactionHistory";
+            this.buttonTransactionHistory.Size = new System.Drawing.Size(179, 39);
+            this.buttonTransactionHistory.TabIndex = 3;
+            this.buttonTransactionHistory.Text = "Transaction History";
+            this.buttonTransactionHistory.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
@@ -133,8 +133,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
         private System.Windows.Forms.Button buttonDeposit;
         private System.Windows.Forms.Button buttonWithdraw;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonTransferFunds;
+        private System.Windows.Forms.Button buttonTransactionHistory;
     }
 }
 
