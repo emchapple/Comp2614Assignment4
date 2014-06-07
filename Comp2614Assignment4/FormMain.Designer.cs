@@ -77,6 +77,7 @@
             this.buttonDeposit.TabIndex = 0;
             this.buttonDeposit.Text = "Deposit";
             this.buttonDeposit.UseVisualStyleBackColor = true;
+            this.buttonDeposit.Click += new System.EventHandler(this.buttonDeposit_Click);
             // 
             // buttonWithdraw
             // 
@@ -88,6 +89,7 @@
             this.buttonWithdraw.TabIndex = 1;
             this.buttonWithdraw.Text = "Withdraw";
             this.buttonWithdraw.UseVisualStyleBackColor = true;
+            this.buttonWithdraw.Click += new System.EventHandler(this.buttonWithdraw_Click);
             // 
             // buttonTransferFunds
             // 

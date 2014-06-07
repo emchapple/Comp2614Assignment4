@@ -50,16 +50,34 @@
     <Compile Include="BankAccount.cs" />
     <Compile Include="BankAccountTest.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="DepositDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepositDialog.Designer.cs">
+      <DependentUpon>DepositDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModalDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModalDialog.Designer.cs">
+      <DependentUpon>ModalDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DepositDialog.resx">
+      <DependentUpon>DepositDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModalDialog.resx">
+      <DependentUpon>ModalDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

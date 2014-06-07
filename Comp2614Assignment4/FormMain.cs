@@ -25,7 +25,8 @@ namespace Comp2614Assignment4
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            ModalDialog transferDlg = new ModalDialog();
+            transferDlg.ShowDialog();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -96,6 +97,19 @@ namespace Comp2614Assignment4
             }
             return display;
 
+        }
+
+        private void buttonDeposit_Click(object sender, EventArgs e)
+        {
+            DepositOrWithdrawDialog depositDlg = new DepositOrWithdrawDialog();
+            depositDlg.ShowDialog();
+
+        }
+
+        private void buttonWithdraw_Click(object sender, EventArgs e)
+        {
+            DepositOrWithdrawDialog withdrawDlg = new DepositOrWithdrawDialog();
+            withdrawDlg.ShowDialog();
         }
 
 
