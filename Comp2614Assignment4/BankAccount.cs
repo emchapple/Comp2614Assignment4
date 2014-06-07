@@ -16,6 +16,11 @@ namespace Comp2614Assignment4
         }
 
         protected int number;
+        public int Number
+        {
+            get { return number; }
+        }
+
         protected decimal balance;
         public decimal Balance
         {
@@ -70,6 +75,10 @@ namespace Comp2614Assignment4
     public class CreditLine : BankAccount
     {
         private decimal creditLimit;
+        public decimal CreditLimit
+        {
+            get { return creditLimit; }
+        }
 
         public  CreditLine(decimal creditLimit, decimal balance) : base(balance)
         {

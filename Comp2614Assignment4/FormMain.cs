@@ -31,7 +31,6 @@ namespace Comp2614Assignment4
         private void FormMain_Load(object sender, EventArgs e)
         {
             setTitleDisplay();
-           // listViewAccountsDisplay.Items.Add(selectedCustomer.Accounts);
             setupListView();
             populateListView();
         }
@@ -53,7 +52,6 @@ namespace Comp2614Assignment4
             listViewAccountsDisplay.Columns.Add("Credit Limit", 120, HorizontalAlignment.Right);
             listViewAccountsDisplay.Columns.Add("Available Funds", -2, HorizontalAlignment.Right);
 
-       
             listViewAccountsDisplay.AllowColumnReorder = true;
             listViewAccountsDisplay.GridLines = false;
 
@@ -71,19 +69,35 @@ namespace Comp2614Assignment4
             foreach (BankAccount account in selectedCustomer.Accounts)
             {
                 ListViewItem accountLine = new ListViewItem();
-                accountLine.Text = account.Name;
+                accountLine.Text = accountNameAndNumberDisplay(account);
                 accountLine.SubItems.Add(account.Balance.ToString("N2"));
-                accountLine.SubItems.Add("FixMe");
-
+                accountLine.SubItems.Add(accountCreditDisplay(account));
                 accountLine.SubItems.Add(account.GetAvailableFunds().ToString("N2"));
 
-           
 
                 listViewAccountsDisplay.Items.Add(accountLine);
             }
             listViewAccountsDisplay.EndUpdate();
 
         }
+
+        private string accountNameAndNumberDisplay(BankAccount account)
+        {
+            return string.Format("{0} {1}", account.Name, account.Number);
+        }
+
+        private string accountCreditDisplay(BankAccount account)
+        {
+            string display = "N/A";            
+            CreditLine creditLine = account as CreditLine;
+            if (creditLine != null)
+            {
+                display = creditLine.CreditLimit.ToString("N2");
+            }
+            return display;
+
+        }
+
 
     }
 }
