@@ -55,6 +55,42 @@ namespace Comp2614Assignment4
             }
         }
 
+        public void Withdraw(decimal amountToWithdraw)
+        {
+            if (withdrawalAmountIsValid(amountToWithdraw))
+            {
+                balance -= amountToWithdraw;
+            
+            }
+            else
+            {
+                throw new Exception("Insufficient funds.");
+            }
+        }
+
+        private bool hasSufficientFunds(decimal amount)
+        {
+            return balance >= amount;
+        }
+
+        private bool withdrawalAmountIsValid(decimal amount)
+        {
+            return amount > 0 && hasSufficientFunds(amount);
+        }
+
+        public void transferTo(BankAccount toAccount, decimal amount)
+        {
+            if (withdrawalAmountIsValid(amount))
+            {
+                this.balance -= amount;
+                toAccount.balance += amount;
+            }
+            else
+            {
+                throw new Exception("Inusfficient funds.");
+            }
+        }
+
     }
 
     public class SavingsAccount : BankAccount

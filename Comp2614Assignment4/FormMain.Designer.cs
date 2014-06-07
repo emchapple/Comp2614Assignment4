@@ -101,7 +101,7 @@
             this.buttonTransferFunds.TabIndex = 2;
             this.buttonTransferFunds.Text = "Transfer Funds";
             this.buttonTransferFunds.UseVisualStyleBackColor = true;
-            this.buttonTransferFunds.Click += new System.EventHandler(this.button3_Click);
+            this.buttonTransferFunds.Click += new System.EventHandler(this.buttonTransferFunds_Click);
             // 
             // buttonTransactionHistory
             // 

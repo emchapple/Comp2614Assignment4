@@ -23,7 +23,7 @@ namespace Comp2614Assignment4
 
         
 
-        private void button3_Click(object sender, EventArgs e)
+        private void buttonTransferFunds_Click(object sender, EventArgs e)
         {
             ModalDialog transferDlg = new ModalDialog();
             transferDlg.ShowDialog();
@@ -70,9 +70,9 @@ namespace Comp2614Assignment4
             foreach (BankAccount account in selectedCustomer.Accounts)
             {
                 ListViewItem accountLine = new ListViewItem();
-                accountLine.Text = accountNameAndNumberDisplay(account);
+                accountLine.Text = Utils.accountNameAndNumberDisplay(account);
                 accountLine.SubItems.Add(account.Balance.ToString("N2"));
-                accountLine.SubItems.Add(accountCreditDisplay(account));
+                accountLine.SubItems.Add(Utils.accountCreditDisplay(account));
                 accountLine.SubItems.Add(account.GetAvailableFunds().ToString("N2"));
 
 
@@ -82,26 +82,13 @@ namespace Comp2614Assignment4
 
         }
 
-        private string accountNameAndNumberDisplay(BankAccount account)
-        {
-            return string.Format("{0} {1}", account.Name, account.Number);
-        }
-
-        private string accountCreditDisplay(BankAccount account)
-        {
-            string display = "N/A";            
-            CreditLine creditLine = account as CreditLine;
-            if (creditLine != null)
-            {
-                display = creditLine.CreditLimit.ToString("N2");
-            }
-            return display;
-
-        }
+    
 
         private void buttonDeposit_Click(object sender, EventArgs e)
         {
             DepositOrWithdrawDialog depositDlg = new DepositOrWithdrawDialog();
+            
+            depositDlg.Accounts = selectedCustomer.Accounts;
             depositDlg.ShowDialog();
 
         }
