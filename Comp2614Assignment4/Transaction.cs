@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Comp2614Assignment4
+{
+    public abstract class Transaction
+    {
+        public enum TransactionStatus { Pending, Complete };
+
+        private DateTime timestamp;
+        public DateTime Timestamp
+        {
+            get { return timestamp; }
+        }
+        protected BankAccount bankAccount;
+        protected decimal amount;
+        public TransactionStatus Status {get; set;}
+        
+           
+
+        public abstract void DoTransaction();
+        public abstract void Process();
+        public bool validateBasics()
+        {
+            if (bankAccount.Active && amount > 0m)
+            {
+                return true;
+            }
+            return false;
+        }
+        
+
+    }
+}

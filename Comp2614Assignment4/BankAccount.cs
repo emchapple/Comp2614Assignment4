@@ -29,6 +29,11 @@ namespace Comp2614Assignment4
 
         protected decimal minimumBalance;
         protected bool active;
+        public bool Active
+        {
+            get { return active; }
+        }
+
         private static int highestAccountNumber;
 
         public BankAccount(decimal balance)
