@@ -15,17 +15,18 @@ namespace Comp2614Assignment4
         {
             get { return timestamp; }
         }
-        protected BankAccount bankAccount;
-        protected decimal amount;
+        public BankAccount Account { get; set; }
+
+        public decimal Amount { get; set; }
+
         public TransactionStatus Status {get; set;}
-        
-           
+                  
 
         public abstract void DoTransaction();
         public abstract void Process();
         public bool validateBasics()
         {
-            if (bankAccount.Active && amount > 0m)
+            if (Account.Active && Amount > 0m)
             {
                 return true;
             }

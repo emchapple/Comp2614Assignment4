@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Comp2614Assignment4
 {
-    public class DepositTransaction : Transaction
+    public class WithdrawalTransaction : Transaction
     {
 
-        public DepositTransaction()
+        public WithdrawalTransaction()
         {
         }
 
-        public DepositTransaction(BankAccount account, decimal amount )
+        public WithdrawalTransaction(BankAccount account, decimal amount )
         {
             this.Account = account;
             this.Amount = amount;
@@ -21,17 +21,20 @@ namespace Comp2614Assignment4
 
         public override void DoTransaction()
         {
-            if (validateBasics())
-            {
+                validateBasics();
+                validateAccountHasFunds();
                 Process();
-            }
-       }
+        }
 
         public override void Process()
         {
-            Account.Deposit(Amount);
+            Account.Withdraw(Amount);
             this.Status = TransactionStatus.Complete;
         }
 
+        private bool validateAccountHasFunds()
+        {
+            return (this.Account.Balance >= Amount);
+        }
     }
 }

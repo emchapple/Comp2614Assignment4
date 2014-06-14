@@ -25,12 +25,15 @@ namespace Comp2614Assignment4
 
         private void buttonTransferFunds_Click(object sender, EventArgs e)
         {
-            ModalDialog transferDlg = new ModalDialog();
+            TransferFundsDialog transferDlg = new TransferFundsDialog();
+            transferDlg.Accounts = selectedCustomer.Accounts;
             transferDlg.ShowDialog();
+
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            labelDebug.Text = string.Empty;
             setTitleDisplay();
             setupListView();
             populateListView();
@@ -86,19 +89,44 @@ namespace Comp2614Assignment4
 
         private void buttonDeposit_Click(object sender, EventArgs e)
         {
-            DepositOrWithdrawDialog depositDlg = new DepositOrWithdrawDialog();
-            
-            depositDlg.Accounts = selectedCustomer.Accounts;
-            depositDlg.ShowDialog();
-
+            Transaction transaction = new DepositTransaction();
+            doFullTransaction(transaction);
+          
         }
 
         private void buttonWithdraw_Click(object sender, EventArgs e)
         {
-            DepositOrWithdrawDialog withdrawDlg = new DepositOrWithdrawDialog();
-            withdrawDlg.ShowDialog();
+            Transaction transaction = new WithdrawalTransaction();
+            doFullTransaction(transaction);
         }
 
+        private void doFullTransaction(Transaction transaction)
+        {
+            DepositOrWithdrawDialog depositDlg = new DepositOrWithdrawDialog();
+                depositDlg.Accounts = selectedCustomer.Accounts;
+                depositDlg.ShowDialog();
+                DialogResult result = depositDlg.DialogResult;
+                if (result == DialogResult.OK)
+                {
+                    transaction.Account = depositDlg.SelectedBankAccount;
+                    transaction.Amount = depositDlg.Amount;
+                    try
+                    {
 
+                        transaction.Process();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("That won't work.");
+                    }
+                    populateListView();
+
+                }
+            }
+    
+        
+
+
+       
     }
 }

@@ -29,10 +29,14 @@
         private void InitializeComponent()
         {
             this.comboBoxAccounts = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxAmount = new System.Windows.Forms.TextBox();
             this.labelAccount = new System.Windows.Forms.Label();
             this.labelAmount = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // buttonOK
+            // 
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // comboBoxAccounts
             // 
@@ -43,12 +47,12 @@
             this.comboBoxAccounts.Size = new System.Drawing.Size(214, 21);
             this.comboBoxAccounts.TabIndex = 2;
             // 
-            // textBox1
+            // textBoxAmount
             // 
-            this.textBox1.Location = new System.Drawing.Point(83, 52);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(133, 20);
-            this.textBox1.TabIndex = 3;
+            this.textBoxAmount.Location = new System.Drawing.Point(83, 52);
+            this.textBoxAmount.Name = "textBoxAmount";
+            this.textBoxAmount.Size = new System.Drawing.Size(133, 20);
+            this.textBoxAmount.TabIndex = 3;
             // 
             // labelAccount
             // 
@@ -75,13 +79,15 @@
             this.ClientSize = new System.Drawing.Size(402, 140);
             this.Controls.Add(this.labelAmount);
             this.Controls.Add(this.labelAccount);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxAmount);
             this.Controls.Add(this.comboBoxAccounts);
             this.Name = "DepositOrWithdrawDialog";
             this.Text = "DepositDialog";
             this.Load += new System.EventHandler(this.DepositOrWithdrawDialog_Load);
+            this.Controls.SetChildIndex(this.buttonOK, 0);
+            this.Controls.SetChildIndex(this.buttonCancel, 0);
             this.Controls.SetChildIndex(this.comboBoxAccounts, 0);
-            this.Controls.SetChildIndex(this.textBox1, 0);
+            this.Controls.SetChildIndex(this.textBoxAmount, 0);
             this.Controls.SetChildIndex(this.labelAccount, 0);
             this.Controls.SetChildIndex(this.labelAmount, 0);
             this.ResumeLayout(false);
@@ -91,9 +97,9 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBoxAccounts;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label labelAccount;
-        private System.Windows.Forms.Label labelAmount;
+        protected System.Windows.Forms.ComboBox comboBoxAccounts;
+        protected System.Windows.Forms.TextBox textBoxAmount;
+        protected System.Windows.Forms.Label labelAccount;
+        protected System.Windows.Forms.Label labelAmount;
     }
 }

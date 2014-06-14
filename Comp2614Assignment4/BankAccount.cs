@@ -36,6 +36,13 @@ namespace Comp2614Assignment4
 
         private static int highestAccountNumber;
 
+        public string NameAndNumberDisplay
+        {
+            get { return string.Format("{0} {1}", name, number); }
+        }
+
+
+
         public BankAccount(decimal balance)
         {
             this.balance = balance;
@@ -95,6 +102,11 @@ namespace Comp2614Assignment4
                 throw new Exception("Inusfficient funds.");
             }
         }
+
+
+
+       
+
 
     }
 

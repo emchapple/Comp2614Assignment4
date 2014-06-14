@@ -34,6 +34,7 @@
             this.buttonWithdraw = new System.Windows.Forms.Button();
             this.buttonTransferFunds = new System.Windows.Forms.Button();
             this.buttonTransactionHistory = new System.Windows.Forms.Button();
+            this.labelDebug = new System.Windows.Forms.Label();
             this.tableLayoutPanelMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,11 +115,21 @@
             this.buttonTransactionHistory.Text = "Transaction History";
             this.buttonTransactionHistory.UseVisualStyleBackColor = true;
             // 
+            // labelDebug
+            // 
+            this.labelDebug.AutoSize = true;
+            this.labelDebug.Location = new System.Drawing.Point(283, 13);
+            this.labelDebug.Name = "labelDebug";
+            this.labelDebug.Size = new System.Drawing.Size(35, 13);
+            this.labelDebug.TabIndex = 2;
+            this.labelDebug.Text = "label1";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(852, 358);
+            this.Controls.Add(this.labelDebug);
             this.Controls.Add(this.tableLayoutPanelMain);
             this.Controls.Add(this.listViewAccountsDisplay);
             this.Name = "FormMain";
@@ -126,6 +137,7 @@
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -137,6 +149,7 @@
         private System.Windows.Forms.Button buttonWithdraw;
         private System.Windows.Forms.Button buttonTransferFunds;
         private System.Windows.Forms.Button buttonTransactionHistory;
+        private System.Windows.Forms.Label labelDebug;
     }
 }
 
