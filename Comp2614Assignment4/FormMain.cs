@@ -20,7 +20,11 @@ namespace Comp2614Assignment4
             this.selectedCustomer = customer;
             InitializeComponent();
         }
+        public FormMain()
+        {
 
+            InitializeComponent();
+        }
         
 
         private void buttonTransferFunds_Click(object sender, EventArgs e)
@@ -28,11 +32,31 @@ namespace Comp2614Assignment4
             TransferFundsDialog transferDlg = new TransferFundsDialog();
             transferDlg.Accounts = selectedCustomer.Accounts;
             transferDlg.ShowDialog();
+            DialogResult result = transferDlg.DialogResult;
+            if (result == DialogResult.OK)
+            {
+                TransferFundsTransaction transaction = new TransferFundsTransaction();
+                transaction.Account = transferDlg.SelectedBankAccount;
+                transaction.ToAccount = transferDlg.ToAccount;
+                transaction.Amount = transferDlg.Amount;
+                try
+                {
+
+                    transaction.Process();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("That won't work.");
+                }
+                populateListView();
+
+            }
 
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+          
             labelDebug.Text = string.Empty;
             setTitleDisplay();
             setupListView();
@@ -112,8 +136,8 @@ namespace Comp2614Assignment4
                     transaction.Amount = depositDlg.Amount;
                     try
                     {
+                        transaction.DoTransaction();
 
-                        transaction.Process();
                     }
                     catch (Exception ex)
                     {

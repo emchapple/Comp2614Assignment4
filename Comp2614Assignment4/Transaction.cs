@@ -32,7 +32,12 @@ namespace Comp2614Assignment4
             }
             return false;
         }
-        
+
+        protected bool validateAccountHasFunds()
+        {
+            decimal availableFunds = this.Account.GetAvailableFunds();
+            return (availableFunds >= Amount);
+        }
 
     }
 }

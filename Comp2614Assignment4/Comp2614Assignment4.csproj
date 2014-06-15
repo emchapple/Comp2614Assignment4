@@ -78,6 +78,7 @@
     <Compile Include="TransferFundsDialog.Designer.cs">
       <DependentUpon>TransferFundsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="TransferFundsTransaction.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="WithdrawalTransaction.cs" />
     <EmbeddedResource Include="DepositDialog.resx">

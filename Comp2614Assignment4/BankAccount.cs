@@ -67,45 +67,46 @@ namespace Comp2614Assignment4
             }
         }
 
-        public void Withdraw(decimal amountToWithdraw)
-        {
-            if (withdrawalAmountIsValid(amountToWithdraw))
-            {
-                balance -= amountToWithdraw;
+        public abstract void Withdraw(decimal amountToWithdraw);
+        //{
+        //    //does this belong here or in the Transaction clasS?????
+        //    //it's already in the transaction class, I don't think it should be here.
+        //    if (withdrawalAmountIsValid(amountToWithdraw))
+        //    {
+        //        //but, this doesn't work for a line of credit. 
+        //        balance -= amountToWithdraw;
             
-            }
-            else
-            {
-                throw new Exception("Insufficient funds.");
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        throw new Exception("Insufficient funds.");
+        //    }
+        //}
 
-        private bool hasSufficientFunds(decimal amount)
-        {
-            return balance >= amount;
-        }
+     //   private bool hasSufficientFunds(decimal amount)
+      //  {
+       //     return balance >= amount;
+       // }
 
         private bool withdrawalAmountIsValid(decimal amount)
         {
-            return amount > 0 && hasSufficientFunds(amount);
+            return amount > 0;// && hasSufficientFunds(amount);
         }
 
-        public void transferTo(BankAccount toAccount, decimal amount)
+        public void TransferTo(BankAccount toAccount, decimal amount)
         {
-            if (withdrawalAmountIsValid(amount))
-            {
-                this.balance -= amount;
-                toAccount.balance += amount;
-            }
-            else
-            {
-                throw new Exception("Inusfficient funds.");
-            }
+            Withdraw(amount);
+            toAccount.Deposit(amount);
+            //if (withdrawalAmountIsValid(amount))
+            //{
+            //    this.balance -= amount;
+            //    toAccount.balance += amount;
+            //}
+            //else
+            //{
+            //    throw new Exception("Inusfficient funds.");
+            //}
         }
-
-
-
-       
 
 
     }
@@ -121,6 +122,11 @@ namespace Comp2614Assignment4
         public override decimal GetAvailableFunds()
         {
             return balance;
+        }
+
+        public override void Withdraw(decimal amount)
+        {
+            balance -= amount;
         }
 
     }
@@ -145,6 +151,11 @@ namespace Comp2614Assignment4
             return creditLimit - balance;
         }
 
+        //for a line of credit, the balance actually represents how much money has been borrowed, not available.
+        public override void Withdraw(decimal amount)
+        {
+            balance += amount;
+        }
 
     }
 

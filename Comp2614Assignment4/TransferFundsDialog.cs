@@ -12,6 +12,9 @@ namespace Comp2614Assignment4
 {
     public partial class TransferFundsDialog : DepositOrWithdrawDialog
     {
+        //private BankAccount toAccount;
+        public BankAccount ToAccount { get; set; }
+
         public TransferFundsDialog()
         {
             InitializeComponent();
@@ -45,5 +48,33 @@ namespace Comp2614Assignment4
         {
             populateComboBoxToAccount();
         }
+
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            if (validateInput())
+            {
+                SelectedBankAccount = comboBoxAccounts.SelectedItem as BankAccount;
+                ToAccount = comboBoxToAccounts.SelectedItem as BankAccount;
+                decimal amount = getAmountEntered();
+                this.DialogResult = DialogResult.OK;
+
+            }
+            else
+            {
+                MessageBox.Show("Something is wrong with your input.");
+            }
+        }
+
+
+        private bool validateInput()
+        {
+            return (comboBoxAccounts.SelectedItem != null &&
+                    comboBoxToAccounts.SelectedItem != null &&
+                    amountIsNumeric());
+
+            
+        }
+
+
     }
 }

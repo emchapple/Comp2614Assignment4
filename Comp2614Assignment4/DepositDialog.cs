@@ -17,6 +17,13 @@ namespace Comp2614Assignment4
         public BankAccount SelectedBankAccount
         {
             get { return selectedBankAccount; }
+            set
+            {
+                if (value != null)
+                {
+                    selectedBankAccount = value;
+                }
+            }
         }
         private decimal amount;
         public decimal Amount
@@ -58,12 +65,12 @@ namespace Comp2614Assignment4
             return false;
         }
 
-        private decimal getAmountEntered()
+        protected decimal getAmountEntered()
         {
             return Convert.ToDecimal(textBoxAmount.Text);
         }
 
-        private bool amountIsNumeric()
+        protected bool amountIsNumeric()
         {
             decimal amountTest;
             return decimal.TryParse(textBoxAmount.Text, out amountTest);
