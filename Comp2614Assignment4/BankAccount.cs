@@ -88,6 +88,7 @@ namespace Comp2614Assignment4
        //     return balance >= amount;
        // }
 
+        //fixme, do we need more validation at this stage?
         private bool withdrawalAmountIsValid(decimal amount)
         {
             return amount > 0;// && hasSufficientFunds(amount);

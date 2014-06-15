@@ -42,10 +42,14 @@ namespace Comp2614Assignment4
             get { return accounts; }
         }
 
+        private TransactionCollection transactions;
+
+
+
         public Customer()
         {
             accounts = new List<BankAccount>();
-           
+            transactions = new TransactionCollection();
 
         }
 
@@ -57,6 +61,15 @@ namespace Comp2614Assignment4
             }
         }
 
+        public void AddTransaction(Transaction newTransaction)
+        {
+            transactions.Add(newTransaction);
+        }
+
+        public string PrintTransactions()
+        {
+            return transactions.Print();
+        }
 
 
     }

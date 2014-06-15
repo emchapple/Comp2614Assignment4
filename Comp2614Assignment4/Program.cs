@@ -38,13 +38,11 @@ namespace Comp2614Assignment4
             CreditLine creditLineAccount = new CreditLine(creditLimit, creditLimitBalance);
             customer.AddBankAccount(creditLineAccount);
 
-            decimal savingsAccountBalance2 = 2000m;
+            decimal savingsAccountBalance2 = 3502m;
             SavingsAccount savingsAccount2 = new SavingsAccount(savingsAccountBalance2);
             customer.AddBankAccount(savingsAccount2);
 
-            decimal savingsAccountBalance3 = 2000m;
-            SavingsAccount savingsAccount3 = new SavingsAccount(savingsAccountBalance3);
-            customer.AddBankAccount(savingsAccount3);
+         
 
             
             return customer;

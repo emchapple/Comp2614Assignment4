@@ -114,6 +114,7 @@
             this.buttonTransactionHistory.TabIndex = 3;
             this.buttonTransactionHistory.Text = "Transaction History";
             this.buttonTransactionHistory.UseVisualStyleBackColor = true;
+            this.buttonTransactionHistory.Click += new System.EventHandler(this.buttonTransactionHistory_Click);
             // 
             // labelDebug
             // 

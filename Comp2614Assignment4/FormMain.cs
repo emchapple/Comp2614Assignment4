@@ -22,7 +22,6 @@ namespace Comp2614Assignment4
         }
         public FormMain()
         {
-
             InitializeComponent();
         }
         
@@ -43,6 +42,7 @@ namespace Comp2614Assignment4
                 {
 
                     transaction.Process();
+                    selectedCustomer.AddTransaction(transaction);
                 }
                 catch (Exception ex)
                 {
@@ -137,6 +137,7 @@ namespace Comp2614Assignment4
                     try
                     {
                         transaction.DoTransaction();
+                        selectedCustomer.AddTransaction(transaction);
 
                     }
                     catch (Exception ex)
@@ -147,6 +148,14 @@ namespace Comp2614Assignment4
 
                 }
             }
+
+        private void buttonTransactionHistory_Click(object sender, EventArgs e)
+        {
+            TransactionHistory history = new TransactionHistory();
+            history.History = selectedCustomer.PrintTransactions();
+            history.Show();
+
+        }
     
         
 
