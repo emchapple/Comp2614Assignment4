@@ -151,7 +151,7 @@ namespace Comp2614Assignment4
 
         private void buttonTransactionHistory_Click(object sender, EventArgs e)
         {
-            TransactionHistory history = new TransactionHistory();
+            TransactionHistory history = TransactionHistory.CreateForm();
             history.History = selectedCustomer.PrintTransactions();
             history.Show();
 
