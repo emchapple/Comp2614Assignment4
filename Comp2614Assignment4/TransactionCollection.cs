@@ -26,7 +26,7 @@ namespace Comp2614Assignment4
             string output = "";
             foreach (Transaction transaction in transactions)
             {
-                output += transaction.ToString();
+                output += transaction.Print();
             }
             return output;
         }

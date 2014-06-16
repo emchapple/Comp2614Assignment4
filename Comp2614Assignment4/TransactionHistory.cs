@@ -26,7 +26,7 @@ namespace Comp2614Assignment4
 
         private void TransactionHistory_Load(object sender, EventArgs e)
         {
-            textBoxHistory.Text = history;
+            UpdateHistory();
         }
 
         public static TransactionHistory CreateForm()   // create public static method with form type return
@@ -39,9 +39,21 @@ namespace Comp2614Assignment4
             return instance;
         }
 
+        public void UpdateHistory()
+        {
+            textBoxHistory.Clear();
+            textBoxHistory.Text = history;
+        }
+
+
         private void TransactionHistoryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             instance = null; // explicitly set form instance to null as form closes
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
 

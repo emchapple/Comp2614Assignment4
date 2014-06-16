@@ -40,6 +40,7 @@
             // 
             // listViewAccountsDisplay
             // 
+            this.listViewAccountsDisplay.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewAccountsDisplay.Location = new System.Drawing.Point(58, 46);
             this.listViewAccountsDisplay.Name = "listViewAccountsDisplay";
             this.listViewAccountsDisplay.Size = new System.Drawing.Size(727, 162);

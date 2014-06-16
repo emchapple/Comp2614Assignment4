@@ -13,7 +13,7 @@ namespace Comp2614Assignment4
     public partial class FormMain : Form
     {
         private Customer selectedCustomer {get;set;}
-
+        private TransactionHistory history;
         public FormMain(Customer customer)
       
         {
@@ -26,34 +26,7 @@ namespace Comp2614Assignment4
         }
         
 
-        private void buttonTransferFunds_Click(object sender, EventArgs e)
-        {
-            TransferFundsDialog transferDlg = new TransferFundsDialog();
-            transferDlg.Accounts = selectedCustomer.Accounts;
-            transferDlg.ShowDialog();
-            DialogResult result = transferDlg.DialogResult;
-            if (result == DialogResult.OK)
-            {
-                TransferFundsTransaction transaction = new TransferFundsTransaction();
-                transaction.Account = transferDlg.SelectedBankAccount;
-                transaction.ToAccount = transferDlg.ToAccount;
-                transaction.Amount = transferDlg.Amount;
-                try
-                {
-
-                    transaction.Process();
-                    selectedCustomer.AddTransaction(transaction);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("That won't work.");
-                }
-                populateListView();
-
-            }
-
-        }
-
+      
         private void FormMain_Load(object sender, EventArgs e)
         {
           
@@ -82,7 +55,6 @@ namespace Comp2614Assignment4
 
             listViewAccountsDisplay.AllowColumnReorder = true;
             listViewAccountsDisplay.GridLines = false;
-
             listViewAccountsDisplay.Sorting = SortOrder.None;
 
           
@@ -102,7 +74,6 @@ namespace Comp2614Assignment4
                 accountLine.SubItems.Add(Utils.accountCreditDisplay(account));
                 accountLine.SubItems.Add(account.GetAvailableFunds().ToString("N2"));
 
-
                 listViewAccountsDisplay.Items.Add(accountLine);
             }
             listViewAccountsDisplay.EndUpdate();
@@ -115,7 +86,6 @@ namespace Comp2614Assignment4
         {
             Transaction transaction = new DepositTransaction();
             doFullTransaction(transaction);
-          
         }
 
         private void buttonWithdraw_Click(object sender, EventArgs e)
@@ -138,7 +108,7 @@ namespace Comp2614Assignment4
                     {
                         transaction.DoTransaction();
                         selectedCustomer.AddTransaction(transaction);
-
+                        updateHistoryDisplay();
                     }
                     catch (Exception ex)
                     {
@@ -149,12 +119,51 @@ namespace Comp2614Assignment4
                 }
             }
 
+        private void buttonTransferFunds_Click(object sender, EventArgs e)
+        {
+            TransferFundsDialog transferDlg = new TransferFundsDialog();
+            transferDlg.Accounts = selectedCustomer.Accounts;
+            transferDlg.ShowDialog();
+            DialogResult result = transferDlg.DialogResult;
+            if (result == DialogResult.OK)
+            {
+                TransferFundsTransaction transaction = new TransferFundsTransaction();
+                transaction.Account = transferDlg.SelectedBankAccount;
+                transaction.ToAccount = transferDlg.ToAccount;
+                transaction.Amount = transferDlg.Amount;
+                try
+                {
+                    transaction.Process();
+                    selectedCustomer.AddTransaction(transaction);
+                    updateHistoryDisplay();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("That won't work.");
+                }
+                populateListView();
+
+            }
+
+        }
+
+
+        private void updateHistoryDisplay()
+        {
+            if (history != null)
+            {
+                history.History = selectedCustomer.PrintTransactions();
+                history.UpdateHistory();
+            }
+        }
+    
+
         private void buttonTransactionHistory_Click(object sender, EventArgs e)
         {
-            TransactionHistory history = TransactionHistory.CreateForm();
-            history.History = selectedCustomer.PrintTransactions();
+            history = TransactionHistory.CreateForm();
+            updateHistoryDisplay();
             history.Show();
-
         }
     
         

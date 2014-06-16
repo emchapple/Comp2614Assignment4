@@ -20,8 +20,7 @@ namespace Comp2614Assignment4
         public decimal Amount { get; set; }
 
         public TransactionStatus Status {get; set;}
-                  
-
+ 
         public abstract void DoTransaction();
         public abstract void Process();
         public bool validateBasics()
@@ -38,6 +37,14 @@ namespace Comp2614Assignment4
             decimal availableFunds = this.Account.GetAvailableFunds();
             return (availableFunds >= Amount);
         }
+
+        protected void setTimeStampToNow()
+        {
+            timestamp = DateTime.Now;
+        }
+
+        public abstract string Print();
+
 
     }
 }
