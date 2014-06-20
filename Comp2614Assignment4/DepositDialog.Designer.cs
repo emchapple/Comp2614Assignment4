@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.comboBoxAccounts = new System.Windows.Forms.ComboBox();
             this.textBoxAmount = new System.Windows.Forms.TextBox();
             this.labelAccount = new System.Windows.Forms.Label();
             this.labelAmount = new System.Windows.Forms.Label();
+            this.errorProviderMain = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMain)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonOK
@@ -72,6 +75,11 @@
             this.labelAmount.TabIndex = 5;
             this.labelAmount.Text = "Amount:";
             // 
+            // errorProviderMain
+            // 
+            this.errorProviderMain.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderMain.ContainerControl = this;
+            // 
             // DepositOrWithdrawDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -90,6 +98,7 @@
             this.Controls.SetChildIndex(this.textBoxAmount, 0);
             this.Controls.SetChildIndex(this.labelAccount, 0);
             this.Controls.SetChildIndex(this.labelAmount, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMain)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,5 +110,6 @@
         protected System.Windows.Forms.TextBox textBoxAmount;
         protected System.Windows.Forms.Label labelAccount;
         protected System.Windows.Forms.Label labelAmount;
+        private System.Windows.Forms.ErrorProvider errorProviderMain;
     }
 }

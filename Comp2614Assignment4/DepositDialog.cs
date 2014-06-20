@@ -58,16 +58,46 @@ namespace Comp2614Assignment4
 
         private bool validateInput()
         {
-            if (comboBoxAccounts.SelectedItem != null && amountIsNumeric())
+
+            bool accountIsValid;
+            if (comboBoxAccounts.SelectedItem == null)
             {
-                return true;
+                errorProviderMain.SetError(comboBoxAccounts, "Please select an account");
+                accountIsValid = false;
             }
-            return false;
+            else
+            {
+
+                selectedBankAccount = comboBoxAccounts.SelectedItem as BankAccount;
+                
+                errorProviderMain.SetError(comboBoxAccounts, string.Empty);
+                accountIsValid = true;
+            }
+
+            bool amountIsValid;
+            if (amountIsNumeric() == false)
+            {
+                errorProviderMain.SetError(textBoxAmount, "Please enter a positive number");
+                amountIsValid = false;
+            }
+            else
+            {
+                errorProviderMain.SetError(textBoxAmount, string.Empty);
+
+                amount = getAmountEntered();
+                amountIsValid = true;
+            }
+            return (accountIsValid && amountIsValid);
+
         }
 
         protected decimal getAmountEntered()
         {
-            return Convert.ToDecimal(textBoxAmount.Text);
+          //  return Convert.ToDecimal(textBoxAmount.Text);
+            decimal amountTest;
+            decimal.TryParse(textBoxAmount.Text, out amountTest);
+            return amountTest;
+
         }
 
         protected bool amountIsNumeric()
@@ -81,15 +111,10 @@ namespace Comp2614Assignment4
         {
             if (validateInput())
             {
-                selectedBankAccount = comboBoxAccounts.SelectedItem as BankAccount;
-                amount = getAmountEntered();
+
                 this.DialogResult = DialogResult.OK;
+            }
            
-            }
-            else
-            {
-                MessageBox.Show("Something is wrong with your input.");
-            }
         }
 
         private void buttonOK_Click(object sender, EventArgs e)

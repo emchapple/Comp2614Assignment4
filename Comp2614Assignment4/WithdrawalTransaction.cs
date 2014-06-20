@@ -24,11 +24,13 @@ namespace Comp2614Assignment4
 
         public override void DoTransaction()
         {
-                validateBasics();
+            if (validateBasics())
+            {
                 if (validateAccountHasFunds())
                 {
                     Process();
                 }
+            }
         }
 
         public override void Process()

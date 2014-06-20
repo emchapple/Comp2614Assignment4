@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelToAccount = new System.Windows.Forms.Label();
             this.comboBoxToAccounts = new System.Windows.Forms.ComboBox();
+            this.errorProviderMain = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMain)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxAccounts
@@ -84,6 +87,11 @@
             this.comboBoxToAccounts.Size = new System.Drawing.Size(136, 21);
             this.comboBoxToAccounts.TabIndex = 7;
             // 
+            // errorProviderMain
+            // 
+            this.errorProviderMain.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderMain.ContainerControl = this;
+            // 
             // TransferFundsDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -102,6 +110,7 @@
             this.Controls.SetChildIndex(this.labelAmount, 0);
             this.Controls.SetChildIndex(this.labelToAccount, 0);
             this.Controls.SetChildIndex(this.comboBoxToAccounts, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMain)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,5 +120,6 @@
 
         private System.Windows.Forms.Label labelToAccount;
         private System.Windows.Forms.ComboBox comboBoxToAccounts;
+        private System.Windows.Forms.ErrorProvider errorProviderMain;
     }
 }

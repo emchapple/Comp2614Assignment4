@@ -61,7 +61,7 @@ namespace Comp2614Assignment4
             }
             else
             {
-                MessageBox.Show("Something is wrong with your input.");
+                //     MessageBox.Show("Something is wrong with your input.");
             }
         }
 
@@ -72,9 +72,22 @@ namespace Comp2614Assignment4
                     comboBoxToAccounts.SelectedItem != null &&
                     amountIsNumeric());
 
-            
+
         }
 
-       
+        private bool validateToAccount()
+        {
+            if (comboBoxToAccounts.SelectedItem != null)
+            {
+                errorProviderMain.SetError(comboBoxToAccounts, string.Empty);
+                return true;
+            }
+            else
+            {
+                errorProviderMain.SetError(comboBoxToAccounts, "Please select an account");
+                return false;
+            }
+
+        }
     }
 }

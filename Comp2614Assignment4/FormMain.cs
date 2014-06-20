@@ -133,7 +133,7 @@ namespace Comp2614Assignment4
                 transaction.Amount = transferDlg.Amount;
                 try
                 {
-                    transaction.Process();
+                    transaction.DoTransaction();
                     selectedCustomer.AddTransaction(transaction);
                     updateHistoryDisplay();
 
