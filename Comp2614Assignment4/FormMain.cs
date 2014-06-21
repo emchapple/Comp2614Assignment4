@@ -30,9 +30,12 @@ namespace Comp2614Assignment4
         {
           
             labelDebug.Text = string.Empty;
+            toolStripStatusLabelInfoMessage.Text = string.Empty;
             setTitleDisplay();
             setupListView();
             populateListView();
+            initStatusStrip();
+
         }
 
         private void setTitleDisplay()
@@ -103,6 +106,7 @@ namespace Comp2614Assignment4
             
         private void buttonDeposit_Click(object sender, EventArgs e)
         {
+            toolStripStatusLabelInfoMessage.Text = "Enter a Deposit";
             DepositOrWithdrawDialog depositDlg = new DepositOrWithdrawDialog();
             Transaction transaction = new DepositTransaction();
             doFullTransaction(transaction, depositDlg);
@@ -110,6 +114,7 @@ namespace Comp2614Assignment4
 
         private void buttonWithdraw_Click(object sender, EventArgs e)
         {
+            toolStripStatusLabelInfoMessage.Text = "Enter a Withdrawal";
             DepositOrWithdrawDialog withdrawalDlg = new DepositOrWithdrawDialog();
             Transaction transaction = new WithdrawalTransaction();
             doFullTransaction(transaction, withdrawalDlg);
@@ -117,6 +122,7 @@ namespace Comp2614Assignment4
 
         private void buttonTransferFunds_Click(object sender, EventArgs e)
         {
+            toolStripStatusLabelInfoMessage.Text = "Enter a Transfer";
             DepositOrWithdrawDialog transferDlg = new TransferFundsDialog();
             Transaction transaction = new TransferFundsTransaction();
             doFullTransaction(transaction, transferDlg);
@@ -165,7 +171,11 @@ namespace Comp2614Assignment4
             e.Cancel = true;
         }
 
-     
+        private void initStatusStrip()
+        {
+            toolStripStatusLabelDate.Text = DateTime.Now.ToString();
+
+        }
         
 
 
