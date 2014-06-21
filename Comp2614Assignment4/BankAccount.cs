@@ -143,11 +143,18 @@ namespace Comp2614Assignment4
         public  CreditLine(decimal creditLimit, decimal balance) : base(balance)
         {
             this.creditLimit = creditLimit;
+            this.minimumBalance = creditLimit *(-1m);
             this.balance = balance;
             name = "Line Of Credit";
         }
 
         public override decimal GetAvailableFunds()
+        {
+            return balance;
+          //  return creditLimit - balance;
+        }
+
+        public decimal AmountBorrowed()
         {
             return creditLimit - balance;
         }
@@ -155,7 +162,7 @@ namespace Comp2614Assignment4
         //for a line of credit, the balance actually represents how much money has been borrowed, not available.
         public override void Withdraw(decimal amount)
         {
-            balance += amount;
+            balance -= amount;
         }
 
     }

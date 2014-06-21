@@ -24,13 +24,16 @@ namespace Comp2614Assignment4
 
         public override void DoTransaction()
         {
-            if (validateBasics())
+            validateBasics();
+            if (Account.GetAvailableFunds() < Amount)
             {
-                if (validateAccountHasFunds())
-                {
-                    Process();
-                }
+                throw new NoSufficientFundsException(Account, Amount);
             }
+            else
+            {
+                Process();
+            }
+            
         }
 
         public override void Process()

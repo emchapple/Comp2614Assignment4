@@ -12,7 +12,23 @@ namespace Comp2614Assignment4
 {
     public partial class DepositOrWithdrawDialog : ModalDialog
     {
-        public List<BankAccount> Accounts { get; set; }
+        public List<BankAccount> Accounts
+        {
+            get
+            {
+
+                if (selectedCustomer != null)
+                {
+                    return selectedCustomer.Accounts;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+        }
+
         private BankAccount selectedBankAccount;
         public BankAccount SelectedBankAccount
         {
@@ -31,6 +47,36 @@ namespace Comp2614Assignment4
             get { return amount; }
         }
 
+        private Customer selectedCustomer;
+        public Customer SelectedCustomer
+        {
+            get { return selectedCustomer; }
+            set
+            {
+                if (value != null)
+                {
+                    selectedCustomer = value;
+                }
+            }
+
+        }
+
+        private Transaction transaction;
+        public Transaction CurrentTransaction
+        {
+            get
+            {
+                return transaction;
+            }
+
+            set
+            {
+                if (value != null)
+                {
+                    transaction = value;
+                }
+            }
+        }
 
 
         public DepositOrWithdrawDialog()
@@ -46,7 +92,7 @@ namespace Comp2614Assignment4
         }
 
         private void populateAccountBox()
-        { 
+        {
             if (Accounts != null)
             {
                 foreach (BankAccount account in Accounts)
@@ -56,7 +102,7 @@ namespace Comp2614Assignment4
             }
         }
 
-        private bool validateInput()
+        protected bool validateInput()
         {
 
             bool accountIsValid;
@@ -93,7 +139,6 @@ namespace Comp2614Assignment4
 
         protected decimal getAmountEntered()
         {
-          //  return Convert.ToDecimal(textBoxAmount.Text);
             decimal amountTest;
             decimal.TryParse(textBoxAmount.Text, out amountTest);
             return amountTest;
@@ -111,8 +156,20 @@ namespace Comp2614Assignment4
         {
             if (validateInput())
             {
+                transaction.Account = selectedBankAccount;
+                transaction.Amount = Amount;
 
-                this.DialogResult = DialogResult.OK;
+                try
+                {
+                    transaction.DoTransaction();
+                    selectedCustomer.AddTransaction(transaction);
+                    this.DialogResult = DialogResult.OK;
+                }
+                catch (Exception ex)
+                {
+                    errorProviderMain.SetError(textBoxAmount, ex.Message); 
+                }
+
             }
            
         }

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Comp2614Assignment4
 {
-    public partial class FormMain : Form
+    public partial class              FormMain : Form
     {
         private Customer selectedCustomer {get;set;}
         private TransactionHistory history;
@@ -25,7 +25,6 @@ namespace Comp2614Assignment4
             InitializeComponent();
         }
         
-
       
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -48,9 +47,9 @@ namespace Comp2614Assignment4
             listViewAccountsDisplay.FullRowSelect = true;
 
             // column headers
-            listViewAccountsDisplay.Columns.Add("Account Name", 150);
-            listViewAccountsDisplay.Columns.Add("Balance", 120, HorizontalAlignment.Right);
-            listViewAccountsDisplay.Columns.Add("Credit Limit", 120, HorizontalAlignment.Right);
+            listViewAccountsDisplay.Columns.Add("Account Name", 180);
+            listViewAccountsDisplay.Columns.Add("Balance", 150, HorizontalAlignment.Right);
+            listViewAccountsDisplay.Columns.Add("Credit Limit", 150, HorizontalAlignment.Right);
             listViewAccountsDisplay.Columns.Add("Available Funds", -2, HorizontalAlignment.Right);
 
             listViewAccountsDisplay.AllowColumnReorder = true;
@@ -65,88 +64,110 @@ namespace Comp2614Assignment4
 
             listViewAccountsDisplay.Items.Clear();
             listViewAccountsDisplay.BeginUpdate();
+            
 
             foreach (BankAccount account in selectedCustomer.Accounts)
             {
                 ListViewItem accountLine = new ListViewItem();
+                accountLine.UseItemStyleForSubItems = false;
+                Color color = listViewAccountsDisplay.ForeColor;
                 accountLine.Text = Utils.accountNameAndNumberDisplay(account);
-                accountLine.SubItems.Add(account.Balance.ToString("N2"));
-                accountLine.SubItems.Add(Utils.accountCreditDisplay(account));
+                if (account is CreditLine)// account.getAvailableFunds < account.CreditLimit)
+                {
+                    string displayString = string.Empty;
+                    CreditLine creditLine = account as CreditLine;
+                    if (creditLine.AmountBorrowed() > 0m)
+                    {
+                        color = Color.Red;
+                        displayString = string.Format("({0})", (creditLine.AmountBorrowed()).ToString("N2"));
+                    }
+                    else
+                    {
+                        displayString = creditLine.Balance.ToString("N2");
+                    }
+                    accountLine.SubItems.Add(displayString, color, SystemColors.Window, listViewAccountsDisplay.Font);
+
+                }
+                else
+                {
+
+                    accountLine.SubItems.Add(account.Balance.ToString("N2"), color, SystemColors.Window, listViewAccountsDisplay.Font);
+                }
+                    accountLine.SubItems.Add(Utils.accountCreditDisplay(account));
                 accountLine.SubItems.Add(account.GetAvailableFunds().ToString("N2"));
+             
 
                 listViewAccountsDisplay.Items.Add(accountLine);
             }
             listViewAccountsDisplay.EndUpdate();
 
         }
-
-    
-
+            
         private void buttonDeposit_Click(object sender, EventArgs e)
         {
+            DepositOrWithdrawDialog depositDlg = new DepositOrWithdrawDialog();
             Transaction transaction = new DepositTransaction();
-            doFullTransaction(transaction);
+            doFullTransaction(transaction, depositDlg);
         }
 
         private void buttonWithdraw_Click(object sender, EventArgs e)
         {
+            DepositOrWithdrawDialog withdrawalDlg = new DepositOrWithdrawDialog();
             Transaction transaction = new WithdrawalTransaction();
-            doFullTransaction(transaction);
+            doFullTransaction(transaction, withdrawalDlg);
         }
-
-        private void doFullTransaction(Transaction transaction)
-        {
-            DepositOrWithdrawDialog depositDlg = new DepositOrWithdrawDialog();
-                depositDlg.Accounts = selectedCustomer.Accounts;
-                depositDlg.ShowDialog();
-                DialogResult result = depositDlg.DialogResult;
-                if (result == DialogResult.OK)
-                {
-                    transaction.Account = depositDlg.SelectedBankAccount;
-                    transaction.Amount = depositDlg.Amount;
-                    try
-                    {
-                        transaction.DoTransaction();
-                        selectedCustomer.AddTransaction(transaction);
-                        updateHistoryDisplay();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("That won't work.");
-                    }
-                    populateListView();
-
-                }
-            }
 
         private void buttonTransferFunds_Click(object sender, EventArgs e)
         {
-            TransferFundsDialog transferDlg = new TransferFundsDialog();
-            transferDlg.Accounts = selectedCustomer.Accounts;
-            transferDlg.ShowDialog();
-            DialogResult result = transferDlg.DialogResult;
+            DepositOrWithdrawDialog transferDlg = new TransferFundsDialog();
+            Transaction transaction = new TransferFundsTransaction();
+            doFullTransaction(transaction, transferDlg);
+        }
+
+        private void doFullTransaction(Transaction transaction, DepositOrWithdrawDialog dlg)
+        {
+            dlg.SelectedCustomer = selectedCustomer;
+            dlg.CurrentTransaction = transaction;
+            dlg.ShowDialog();
+            DialogResult result = dlg.DialogResult;
             if (result == DialogResult.OK)
             {
-                TransferFundsTransaction transaction = new TransferFundsTransaction();
-                transaction.Account = transferDlg.SelectedBankAccount;
-                transaction.ToAccount = transferDlg.ToAccount;
-                transaction.Amount = transferDlg.Amount;
-                try
-                {
-                    transaction.DoTransaction();
-                    selectedCustomer.AddTransaction(transaction);
-                    updateHistoryDisplay();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("That won't work.");
-                }
+                updateHistoryDisplay();
                 populateListView();
-
             }
-
         }
+
+
+
+
+      //  private void buttonTransferFunds_Click(object sender, EventArgs e)
+      //  {
+      //      TransferFundsDialog transferDlg = new TransferFundsDialog();
+      ////      transferDlg.Accounts = selectedCustomer.Accounts;
+      //      transferDlg.ShowDialog();
+      //      DialogResult result = transferDlg.DialogResult;
+      //      if (result == DialogResult.OK)
+      //      {
+      //          TransferFundsTransaction transaction = new TransferFundsTransaction();
+      //          transaction.Account = transferDlg.SelectedBankAccount;
+      //          transaction.ToAccount = transferDlg.ToAccount;
+      //          transaction.Amount = transferDlg.Amount;
+      //          try
+      //          {
+      //              transaction.DoTransaction();
+      //              selectedCustomer.AddTransaction(transaction);
+      //              updateHistoryDisplay();
+
+      //          }
+      //          catch (Exception ex)
+      //          {
+      //              MessageBox.Show(ex.Message);
+      //          }
+      //          populateListView();
+
+      //      }
+
+      //  }
 
 
         private void updateHistoryDisplay()
@@ -165,7 +186,26 @@ namespace Comp2614Assignment4
             updateHistoryDisplay();
             history.Show();
         }
-    
+
+        private void listViewAccountsDisplay_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
+        {
+            //e.Cancel = true;
+            
+        }
+
+        private void listViewAccountsDisplay_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            labelDebug.Text = e.Cancel.ToString();
+            e.NewWidth = listViewAccountsDisplay.Columns[e.ColumnIndex].Width;
+        }
+
+        private void listViewAccountsDisplay_ColumnReordered(object sender, ColumnReorderedEventArgs e)
+        {
+            e.Cancel = true;
+        }
+
+     
         
 
 

@@ -47,9 +47,12 @@
             this.listViewAccountsDisplay.TabIndex = 0;
             this.listViewAccountsDisplay.UseCompatibleStateImageBehavior = false;
             this.listViewAccountsDisplay.View = System.Windows.Forms.View.Details;
+            this.listViewAccountsDisplay.ColumnReordered += new System.Windows.Forms.ColumnReorderedEventHandler(this.listViewAccountsDisplay_ColumnReordered);
+            this.listViewAccountsDisplay.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listViewAccountsDisplay_ColumnWidthChanging);
             // 
             // tableLayoutPanelMain
             // 
+            this.tableLayoutPanelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.tableLayoutPanelMain.ColumnCount = 5;
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
@@ -60,7 +63,7 @@
             this.tableLayoutPanelMain.Controls.Add(this.buttonWithdraw, 2, 0);
             this.tableLayoutPanelMain.Controls.Add(this.buttonTransferFunds, 4, 0);
             this.tableLayoutPanelMain.Controls.Add(this.buttonTransactionHistory, 4, 2);
-            this.tableLayoutPanelMain.Location = new System.Drawing.Point(58, 227);
+            this.tableLayoutPanelMain.Location = new System.Drawing.Point(58, 166);
             this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
             this.tableLayoutPanelMain.RowCount = 3;
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -130,7 +133,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 358);
+            this.ClientSize = new System.Drawing.Size(852, 285);
             this.Controls.Add(this.labelDebug);
             this.Controls.Add(this.tableLayoutPanelMain);
             this.Controls.Add(this.listViewAccountsDisplay);

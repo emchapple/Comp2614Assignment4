@@ -12,8 +12,9 @@ namespace Comp2614Assignment4
 {
     public partial class TransferFundsDialog : DepositOrWithdrawDialog
     {
-        //private BankAccount toAccount;
         public BankAccount ToAccount { get; set; }
+        private TransferFundsTransaction transaction;
+
 
         public TransferFundsDialog()
         {
@@ -22,8 +23,12 @@ namespace Comp2614Assignment4
 
         private void TransferFundsDialog_Load(object sender, EventArgs e)
         {
+            transaction = CurrentTransaction as TransferFundsTransaction;
             comboBoxToAccounts.ValueMember = "NameAndNumberDisplay";
-            comboBoxAccounts.SelectedIndex = 0;
+            if (comboBoxAccounts.Items.Count > 0)
+            {
+                comboBoxAccounts.SelectedIndex = 0;
+            }
             populateComboBoxToAccount();
         }
 
@@ -31,16 +36,19 @@ namespace Comp2614Assignment4
         {
             comboBoxToAccounts.Items.Clear();
             BankAccount fromAccount = comboBoxAccounts.SelectedItem as BankAccount;
-            foreach (BankAccount account in this.Accounts)
+            if (this.Accounts != null)
             {
-                if (account != null && account != fromAccount)
+                foreach (BankAccount account in this.Accounts)
                 {
-                    comboBoxToAccounts.Items.Add(account);
+                    if (account != null && account != fromAccount)
+                    {
+                        comboBoxToAccounts.Items.Add(account);
+                    }
                 }
-            }
-            if (comboBoxToAccounts.Items.Count > 0)
-            {
-                comboBoxToAccounts.SelectedIndex = 0;
+                if (comboBoxToAccounts.Items.Count > 0)
+                {
+                    comboBoxToAccounts.SelectedIndex = 0;
+                }
             }
         }
 
@@ -51,17 +59,41 @@ namespace Comp2614Assignment4
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
+            //if (validateInput())
+            //{
+            //    SelectedBankAccount = comboBoxAccounts.SelectedItem as BankAccount;
+            //    ToAccount = comboBoxToAccounts.SelectedItem as BankAccount;
+            //    decimal amount = getAmountEntered();
+            //    this.DialogResult = DialogResult.OK;
+
+            //}
+            //else
+            //{
+            //    //     MessageBox.Show("Something is wrong with your input.");
+            
+
+            
             if (validateInput())
             {
+
                 SelectedBankAccount = comboBoxAccounts.SelectedItem as BankAccount;
                 ToAccount = comboBoxToAccounts.SelectedItem as BankAccount;
-                decimal amount = getAmountEntered();
-                this.DialogResult = DialogResult.OK;
+                
+                transaction.Account = SelectedBankAccount;
+                transaction.Amount = getAmountEntered();
+                transaction.ToAccount = ToAccount;
 
-            }
-            else
-            {
-                //     MessageBox.Show("Something is wrong with your input.");
+                try
+                {
+                    transaction.DoTransaction();
+                    SelectedCustomer.AddTransaction(transaction);
+                    this.DialogResult = DialogResult.OK;
+                }
+                catch (Exception ex)
+                {
+                    errorProviderMain.SetError(textBoxAmount, ex.Message); 
+                }
+
             }
         }
 
@@ -71,7 +103,6 @@ namespace Comp2614Assignment4
             return (comboBoxAccounts.SelectedItem != null &&
                     comboBoxToAccounts.SelectedItem != null &&
                     amountIsNumeric());
-
 
         }
 

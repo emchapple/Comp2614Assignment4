@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Comp2614Assignment4
 {
-    public class TransferFundsTransaction : Transaction
+    public class TransferFundsTransaction : WithdrawalTransaction
     {
         public BankAccount ToAccount{get; set;}
 
@@ -15,31 +15,36 @@ namespace Comp2614Assignment4
             setTimeStampToNow();
         }
 
-
-        public override void DoTransaction()
+        public void checkAccounts()
         {
-            if (validateBasics() && validateAccountHasFunds())
+            if(ToAccount == Account)
             {
-                Process();
+                throw new TransferFundsException(Account, ToAccount, Amount);
             }
         }
 
+        public override void DoTransaction()
+        {
+            validateBasics();
+            if (Account.GetAvailableFunds() < Amount)
+            {
+                throw new NoSufficientFundsException(Account, Amount);
+            }
+            else
+            {
+                checkAccounts();
+                Process();
+            }
+
+        }
+
+   
         public override void Process()
         {
             Account.TransferTo(ToAccount, Amount);
             this.Status = TransactionStatus.Complete;
         }
 
-        //public override string Print()
-        //{
-        //    StringBuilder display = new StringBuilder(1000);
-        //    {
-        //        display.Append(this.Timestamp.ToString("d"));
-        //        display.AppendFormat("From account: {0}\n", Account.NameAndNumberDisplay);
-              
-        //    }
-        //    return display.ToString();
-        //}
 
         public override string Print()
         {
@@ -56,10 +61,6 @@ namespace Comp2614Assignment4
 
 
 
-        //private bool validateAccountHasFunds()
-        //{
-        //    return (this.Account.GetAvailableFunds() >= Amount);
-        //}
     }
 }
 

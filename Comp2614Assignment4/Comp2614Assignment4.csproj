@@ -57,6 +57,7 @@
       <DependentUpon>DepositDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="DepositTransaction.cs" />
+    <Compile Include="Exceptions.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -23,20 +23,23 @@ namespace Comp2614Assignment4
  
         public abstract void DoTransaction();
         public abstract void Process();
-        public bool validateBasics()
+
+        public void validateBasics()
         {
-            if (Account.Active && Amount > 0m)
+            if (Account.Active == false)
             {
-                return true;
+                throw new AccountInactiveException(Account);
             }
-            return false;
+                
+            if( Amount <= 0m)
+            {
+                throw new InvalidTransactionAmtException(Amount);
+
+            }
+           
         }
 
-        protected bool validateAccountHasFunds()
-        {
-            decimal availableFunds = this.Account.GetAvailableFunds();
-            return (availableFunds >= Amount);
-        }
+      
 
         protected void setTimeStampToNow()
         {
