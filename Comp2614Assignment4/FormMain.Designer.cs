@@ -137,6 +137,8 @@
             this.Controls.Add(this.labelDebug);
             this.Controls.Add(this.tableLayoutPanelMain);
             this.Controls.Add(this.listViewAccountsDisplay);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormMain";
             this.Text = "Accounts For: <Customer>";
             this.Load += new System.EventHandler(this.FormMain_Load);

@@ -72,7 +72,7 @@ namespace Comp2614Assignment4
                 accountLine.UseItemStyleForSubItems = false;
                 Color color = listViewAccountsDisplay.ForeColor;
                 accountLine.Text = Utils.accountNameAndNumberDisplay(account);
-                if (account is CreditLine)// account.getAvailableFunds < account.CreditLimit)
+                if (account is CreditLine)
                 {
                     string displayString = string.Empty;
                     CreditLine creditLine = account as CreditLine;
@@ -93,10 +93,8 @@ namespace Comp2614Assignment4
 
                     accountLine.SubItems.Add(account.Balance.ToString("N2"), color, SystemColors.Window, listViewAccountsDisplay.Font);
                 }
-                    accountLine.SubItems.Add(Utils.accountCreditDisplay(account));
+                accountLine.SubItems.Add(Utils.accountCreditDisplay(account));
                 accountLine.SubItems.Add(account.GetAvailableFunds().ToString("N2"));
-             
-
                 listViewAccountsDisplay.Items.Add(accountLine);
             }
             listViewAccountsDisplay.EndUpdate();
@@ -138,37 +136,12 @@ namespace Comp2614Assignment4
         }
 
 
-
-
-      //  private void buttonTransferFunds_Click(object sender, EventArgs e)
-      //  {
-      //      TransferFundsDialog transferDlg = new TransferFundsDialog();
-      ////      transferDlg.Accounts = selectedCustomer.Accounts;
-      //      transferDlg.ShowDialog();
-      //      DialogResult result = transferDlg.DialogResult;
-      //      if (result == DialogResult.OK)
-      //      {
-      //          TransferFundsTransaction transaction = new TransferFundsTransaction();
-      //          transaction.Account = transferDlg.SelectedBankAccount;
-      //          transaction.ToAccount = transferDlg.ToAccount;
-      //          transaction.Amount = transferDlg.Amount;
-      //          try
-      //          {
-      //              transaction.DoTransaction();
-      //              selectedCustomer.AddTransaction(transaction);
-      //              updateHistoryDisplay();
-
-      //          }
-      //          catch (Exception ex)
-      //          {
-      //              MessageBox.Show(ex.Message);
-      //          }
-      //          populateListView();
-
-      //      }
-
-      //  }
-
+        private void buttonTransactionHistory_Click(object sender, EventArgs e)
+        {
+            history = TransactionHistory.CreateForm();
+            updateHistoryDisplay();
+            history.Show();
+        }
 
         private void updateHistoryDisplay()
         {
@@ -179,19 +152,6 @@ namespace Comp2614Assignment4
             }
         }
     
-
-        private void buttonTransactionHistory_Click(object sender, EventArgs e)
-        {
-            history = TransactionHistory.CreateForm();
-            updateHistoryDisplay();
-            history.Show();
-        }
-
-        private void listViewAccountsDisplay_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
-        {
-            //e.Cancel = true;
-            
-        }
 
         private void listViewAccountsDisplay_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {

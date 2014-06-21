@@ -39,7 +39,12 @@
             // 
             // buttonOK
             // 
+            this.buttonOK.TabIndex = 2;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.TabIndex = 3;
             // 
             // comboBoxAccounts
             // 
@@ -48,14 +53,15 @@
             this.comboBoxAccounts.Location = new System.Drawing.Point(83, 25);
             this.comboBoxAccounts.Name = "comboBoxAccounts";
             this.comboBoxAccounts.Size = new System.Drawing.Size(214, 21);
-            this.comboBoxAccounts.TabIndex = 2;
+            this.comboBoxAccounts.TabIndex = 5;
             // 
             // textBoxAmount
             // 
             this.textBoxAmount.Location = new System.Drawing.Point(83, 52);
             this.textBoxAmount.Name = "textBoxAmount";
+            this.textBoxAmount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBoxAmount.Size = new System.Drawing.Size(133, 20);
-            this.textBoxAmount.TabIndex = 3;
+            this.textBoxAmount.TabIndex = 1;
             // 
             // labelAccount
             // 
@@ -72,7 +78,7 @@
             this.labelAmount.Location = new System.Drawing.Point(27, 59);
             this.labelAmount.Name = "labelAmount";
             this.labelAmount.Size = new System.Drawing.Size(46, 13);
-            this.labelAmount.TabIndex = 5;
+            this.labelAmount.TabIndex = 0;
             this.labelAmount.Text = "Amount:";
             // 
             // errorProviderMain
