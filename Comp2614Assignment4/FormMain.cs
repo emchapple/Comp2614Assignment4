@@ -34,7 +34,7 @@ namespace Comp2614Assignment4
             setTitleDisplay();
             setupListView();
             populateListView();
-            initStatusStrip();
+            refreshStatusStrip();
 
         }
 
@@ -171,10 +171,15 @@ namespace Comp2614Assignment4
             e.Cancel = true;
         }
 
-        private void initStatusStrip()
+        private void refreshStatusStrip()
         {
-            toolStripStatusLabelDate.Text = DateTime.Now.ToString();
+            toolStripStatusLabelDate.Text = DateTime.Now.ToString("dddd, MMMM d, yyyy  h:mm tt");
 
+        }
+
+        private void timerDateDisplay_Tick(object sender, EventArgs e)
+        {
+            refreshStatusStrip();
         }
         
 

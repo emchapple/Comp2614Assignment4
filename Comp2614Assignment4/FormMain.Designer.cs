@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.listViewAccountsDisplay = new System.Windows.Forms.ListView();
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.buttonDeposit = new System.Windows.Forms.Button();
@@ -39,6 +40,7 @@
             this.toolStripStatusLabelInfoMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelDate = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelPadding = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timerDateDisplay = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanelMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
             this.SuspendLayout();
@@ -170,6 +172,12 @@
             this.toolStripStatusLabelPadding.Name = "toolStripStatusLabelPadding";
             this.toolStripStatusLabelPadding.Size = new System.Drawing.Size(500, 17);
             // 
+            // timerDateDisplay
+            // 
+            this.timerDateDisplay.Enabled = true;
+            this.timerDateDisplay.Interval = 60000;
+            this.timerDateDisplay.Tick += new System.EventHandler(this.timerDateDisplay_Tick);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -205,6 +213,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelInfoMessage;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDate;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelPadding;
+        private System.Windows.Forms.Timer timerDateDisplay;
     }
 }
 
