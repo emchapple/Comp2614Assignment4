@@ -68,45 +68,19 @@ namespace Comp2614Assignment4
         }
 
         public abstract void Withdraw(decimal amountToWithdraw);
-        //{
-        //    //does this belong here or in the Transaction clasS?????
-        //    //it's already in the transaction class, I don't think it should be here.
-        //    if (withdrawalAmountIsValid(amountToWithdraw))
-        //    {
-        //        //but, this doesn't work for a line of credit. 
-        //        balance -= amountToWithdraw;
-            
-        //    }
-        //    else
-        //    {
-        //        throw new Exception("Insufficient funds.");
-        //    }
-        //}
-
-     //   private bool hasSufficientFunds(decimal amount)
-      //  {
-       //     return balance >= amount;
-       // }
+       
 
         //fixme, do we need more validation at this stage?
         private bool withdrawalAmountIsValid(decimal amount)
         {
-            return amount > 0;// && hasSufficientFunds(amount);
+            return amount > 0;
         }
 
         public void TransferTo(BankAccount toAccount, decimal amount)
         {
             Withdraw(amount);
             toAccount.Deposit(amount);
-            //if (withdrawalAmountIsValid(amount))
-            //{
-            //    this.balance -= amount;
-            //    toAccount.balance += amount;
-            //}
-            //else
-            //{
-            //    throw new Exception("Inusfficient funds.");
-            //}
+           
         }
 
 
@@ -151,7 +125,6 @@ namespace Comp2614Assignment4
         public override decimal GetAvailableFunds()
         {
             return balance;
-          //  return creditLimit - balance;
         }
 
         public decimal AmountBorrowed()

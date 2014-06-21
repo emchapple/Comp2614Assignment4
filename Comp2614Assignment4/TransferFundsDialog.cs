@@ -60,7 +60,7 @@ namespace Comp2614Assignment4
         private void buttonOK_Click(object sender, EventArgs e)
         {
                         
-            if (validateInput())
+            if (validateInputs())
             {
 
                 SelectedBankAccount = comboBoxAccounts.SelectedItem as BankAccount;
@@ -85,12 +85,18 @@ namespace Comp2614Assignment4
         }
 
 
-        private bool validateInput()
+        private bool validateInputs()
         {
-            return (comboBoxAccounts.SelectedItem != null &&
-                    comboBoxToAccounts.SelectedItem != null &&
-                    amountIsNumeric());
+            if (validateInput())
+            {
+                if (comboBoxToAccounts.SelectedItem != null)
+                {
+                    return true;
 
+                }
+            }
+                return false;
+            
         }
 
         private bool validateToAccount()

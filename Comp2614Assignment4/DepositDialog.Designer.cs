@@ -59,9 +59,9 @@
             // 
             this.textBoxAmount.Location = new System.Drawing.Point(83, 52);
             this.textBoxAmount.Name = "textBoxAmount";
-            this.textBoxAmount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBoxAmount.Size = new System.Drawing.Size(133, 20);
             this.textBoxAmount.TabIndex = 1;
+            this.textBoxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelAccount
             // 

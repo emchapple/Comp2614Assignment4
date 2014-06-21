@@ -24,18 +24,11 @@ namespace Comp2614Assignment4
 
         public override void DoTransaction()
         {
-        //    try
-         //   {
+      
                 validateBasics();
                 Process();
-           // }
-           // catch
-            
-           //     (Exception ex)
-            //    {
-               //     MessageBox.Show("Invalid transaction request.");
-            //    }
-            }
+       
+        }
 
        
         public override void Process()

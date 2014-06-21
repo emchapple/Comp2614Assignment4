@@ -68,34 +68,17 @@ namespace Comp2614Assignment4
             listViewAccountsDisplay.Items.Clear();
             listViewAccountsDisplay.BeginUpdate();
             
-
             foreach (BankAccount account in selectedCustomer.Accounts)
             {
                 ListViewItem accountLine = new ListViewItem();
                 accountLine.UseItemStyleForSubItems = false;
                 Color color = listViewAccountsDisplay.ForeColor;
                 accountLine.Text = Utils.accountNameAndNumberDisplay(account);
-                if (account is CreditLine)
-                {
-                    string displayString = string.Empty;
-                    CreditLine creditLine = account as CreditLine;
-                    if (creditLine.AmountBorrowed() > 0m)
-                    {
-                        color = Color.Red;
-                        displayString = string.Format("({0})", (creditLine.AmountBorrowed()).ToString("N2"));
-                    }
-                    else
-                    {
-                        displayString = creditLine.Balance.ToString("N2");
-                    }
-                    accountLine.SubItems.Add(displayString, color, SystemColors.Window, listViewAccountsDisplay.Font);
 
-                }
-                else
-                {
+                string accountBalanceString = getBalanceDisplayString(account);
+                Color accountBalanceColor = getBalanceColor(account);
+                accountLine.SubItems.Add(accountBalanceString, accountBalanceColor, SystemColors.Window, listViewAccountsDisplay.Font);
 
-                    accountLine.SubItems.Add(account.Balance.ToString("N2"), color, SystemColors.Window, listViewAccountsDisplay.Font);
-                }
                 accountLine.SubItems.Add(Utils.accountCreditDisplay(account));
                 accountLine.SubItems.Add(account.GetAvailableFunds().ToString("N2"));
                 listViewAccountsDisplay.Items.Add(accountLine);
@@ -104,6 +87,42 @@ namespace Comp2614Assignment4
 
         }
             
+
+        private string getBalanceDisplayString(BankAccount account)
+        {
+            string displayString = string.Empty;
+            CreditLine creditLine = account as CreditLine;
+            if (creditLine != null)
+                {
+                    if (creditLine.AmountBorrowed() > 0m)
+                    {
+                        return string.Format("({0})", (creditLine.AmountBorrowed()).ToString("N2"));
+                    }
+                   
+
+                }
+                
+              return account.Balance.ToString("N2");
+             
+        }
+
+        private Color getBalanceColor(BankAccount account)
+        {
+            if (account is CreditLine)
+            {
+                CreditLine creditLine = account as CreditLine;
+                if (creditLine.AmountBorrowed() > 0m)
+                {
+                    return Color.Red;
+
+                }
+            }
+            return Color.Black;
+
+        }
+
+
+
         private void buttonDeposit_Click(object sender, EventArgs e)
         {
             toolStripStatusLabelInfoMessage.Text = "Enter a Deposit";
