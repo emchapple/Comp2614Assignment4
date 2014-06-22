@@ -41,6 +41,7 @@
             this.toolStripStatusLabelDate = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelPadding = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerDateDisplay = new System.Windows.Forms.Timer(this.components);
+            this.timerProcessTransactions = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanelMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
             this.SuspendLayout();
@@ -151,6 +152,7 @@
             this.statusStripMain.Location = new System.Drawing.Point(0, 238);
             this.statusStripMain.Name = "statusStripMain";
             this.statusStripMain.Size = new System.Drawing.Size(683, 22);
+            this.statusStripMain.SizingGrip = false;
             this.statusStripMain.TabIndex = 3;
             // 
             // toolStripStatusLabelInfoMessage
@@ -162,21 +164,28 @@
             // toolStripStatusLabelDate
             // 
             this.toolStripStatusLabelDate.Name = "toolStripStatusLabelDate";
-            this.toolStripStatusLabelDate.Size = new System.Drawing.Size(72, 17);
+            this.toolStripStatusLabelDate.Size = new System.Drawing.Size(191, 17);
             this.toolStripStatusLabelDate.Spring = true;
             this.toolStripStatusLabelDate.Text = "< Date Display>";
+            this.toolStripStatusLabelDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // toolStripStatusLabelPadding
             // 
             this.toolStripStatusLabelPadding.AutoSize = false;
             this.toolStripStatusLabelPadding.Name = "toolStripStatusLabelPadding";
-            this.toolStripStatusLabelPadding.Size = new System.Drawing.Size(500, 17);
+            this.toolStripStatusLabelPadding.Size = new System.Drawing.Size(350, 17);
             // 
             // timerDateDisplay
             // 
             this.timerDateDisplay.Enabled = true;
             this.timerDateDisplay.Interval = 60000;
             this.timerDateDisplay.Tick += new System.EventHandler(this.timerDateDisplay_Tick);
+            // 
+            // timerProcessTransactions
+            // 
+            this.timerProcessTransactions.Enabled = true;
+            this.timerProcessTransactions.Interval = 5000;
+            this.timerProcessTransactions.Tick += new System.EventHandler(this.timerProcessTransactions_Tick);
             // 
             // FormMain
             // 
@@ -214,6 +223,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDate;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelPadding;
         private System.Windows.Forms.Timer timerDateDisplay;
+        private System.Windows.Forms.Timer timerProcessTransactions;
     }
 }
 

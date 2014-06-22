@@ -31,5 +31,21 @@ namespace Comp2614Assignment4
             return output;
         }
 
+        public bool ProcessPendingTransactions()
+        {
+            bool changed = false;
+            if (transactions.Count > 0)
+            {
+                foreach (Transaction transaction in transactions)
+                {
+                    if (transaction.Status == Transaction.TransactionStatus.Pending)
+                    {
+                        bool thisChanged = transaction.Process();
+                        changed = changed || thisChanged;
+                    }
+                }
+            }
+            return changed;
+        }
     }
 }

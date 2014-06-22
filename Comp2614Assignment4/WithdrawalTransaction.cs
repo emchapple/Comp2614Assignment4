@@ -31,15 +31,16 @@ namespace Comp2614Assignment4
             }
             else
             {
-                Process();
+                //Process();
+                Account.Withdraw(Amount);
+                this.Status = TransactionStatus.Complete;
             }
             
         }
 
-        public override void Process()
+        public override bool Process()
         {
-            Account.Withdraw(Amount);
-            this.Status = TransactionStatus.Complete;
+            return false;
         }
 
 

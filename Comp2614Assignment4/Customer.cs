@@ -71,6 +71,10 @@ namespace Comp2614Assignment4
             return transactions.Print();
         }
 
+        public bool ProcessTransactions()
+        {
+            return transactions.ProcessPendingTransactions();
+        }
 
     }
 }

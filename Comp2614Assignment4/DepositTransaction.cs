@@ -8,6 +8,7 @@ namespace Comp2614Assignment4
 {
     public class DepositTransaction : Transaction
     {
+        private static int DELAY_IN_SECONDS = 30;
 
         public DepositTransaction()
         {
@@ -26,23 +27,44 @@ namespace Comp2614Assignment4
         {
       
                 validateBasics();
-                Process();
+                this.Status = TransactionStatus.Pending;
+               
        
         }
 
        
-        public override void Process()
+        public override bool Process()
         {
-            Account.Deposit(Amount);
-            this.Status = TransactionStatus.Complete;
+           
+            if ( transactionDelayHasElapsed())
+            {
+                Account.Deposit(Amount);
+                this.Status = TransactionStatus.Complete;
+                return true;
+            }
+            return false;
         }
+
+        private bool transactionDelayHasElapsed()
+        {
+            DateTime currentTime = DateTime.Now;
+            TimeSpan difference = currentTime - Timestamp;
+            return difference.Seconds >= DELAY_IN_SECONDS;
+
+        }
+    
 
         public override string Print()
         {
             StringBuilder display = new StringBuilder(1000);
             {
                 display.Append(Timestamp.ToString("d"));
-                display.Append(" Deposit\r\n");
+                display.Append(" Deposit");
+                if (Status == TransactionStatus.Pending)
+                {
+                    display.Append(" [Pending]");
+                }
+                display.Append("\r\n");
                 display.AppendFormat("   To account: {0}\r\n", Account.Number);
                 display.AppendFormat("   Amount: ${0:N2}\r\n", Amount);
             }

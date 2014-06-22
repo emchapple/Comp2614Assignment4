@@ -160,6 +160,11 @@ namespace Comp2614Assignment4
             }
         }
 
+        private void RefreshScreen()
+        {
+            updateHistoryDisplay();
+            populateListView();
+        }
 
         private void buttonTransactionHistory_Click(object sender, EventArgs e)
         {
@@ -199,6 +204,15 @@ namespace Comp2614Assignment4
         private void timerDateDisplay_Tick(object sender, EventArgs e)
         {
             refreshStatusStrip();
+        }
+
+        private void timerProcessTransactions_Tick(object sender, EventArgs e)
+        {
+            bool changed = selectedCustomer.ProcessTransactions();
+            if (changed)
+            {
+                RefreshScreen();
+            }
         }
         
 

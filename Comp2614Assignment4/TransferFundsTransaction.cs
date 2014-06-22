@@ -33,18 +33,18 @@ namespace Comp2614Assignment4
             else
             {
                 checkAccounts();
-                Process();
+              
+                Account.TransferTo(ToAccount, Amount);
+                this.Status = TransactionStatus.Complete;
             }
 
         }
 
-   
-        public override void Process()
+        public override bool Process()
         {
-            Account.TransferTo(ToAccount, Amount);
-            this.Status = TransactionStatus.Complete;
+            return false;
         }
-
+   
 
         public override string Print()
         {

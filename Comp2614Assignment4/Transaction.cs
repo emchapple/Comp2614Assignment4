@@ -22,7 +22,9 @@ namespace Comp2614Assignment4
         public TransactionStatus Status {get; set;}
  
         public abstract void DoTransaction();
-        public abstract void Process();
+        public abstract bool Process();
+        
+        
 
         public void validateBasics()
         {
