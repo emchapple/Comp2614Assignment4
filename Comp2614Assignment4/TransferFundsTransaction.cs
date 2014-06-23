@@ -46,15 +46,19 @@ namespace Comp2614Assignment4
         }
    
 
-        public override string Print()
+        public override string Print(bool detailedView)
         {
             StringBuilder display = new StringBuilder(1000);
             {
                 display.Append(Timestamp.ToString("d"));
                 display.Append(" Transfer\r\n");
-                display.AppendFormat("   From account: {0}\r\n", Account.Number);
-                display.AppendFormat("   To account: {0}\r\n", ToAccount.Number);
-                display.AppendFormat("   Amount: ${0:N2}\r\n", Amount);
+                if (detailedView)
+                {
+
+                    display.AppendFormat("   From account: {0}\r\n", Account.Number);
+                    display.AppendFormat("   To account: {0}\r\n", ToAccount.Number);
+                    display.AppendFormat("   Amount: ${0:N2}\r\n", Amount);
+                }
             }
             return display.ToString();
         }

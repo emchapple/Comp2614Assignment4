@@ -31,7 +31,6 @@ namespace Comp2614Assignment4
             }
             else
             {
-                //Process();
                 Account.Withdraw(Amount);
                 this.Status = TransactionStatus.Complete;
             }
@@ -44,14 +43,17 @@ namespace Comp2614Assignment4
         }
 
 
-        public override string Print()
+        public override string Print(bool detailedView)
         {
             StringBuilder display = new StringBuilder(1000);
             {
                 display.Append(Timestamp.ToString("d"));
                 display.Append(" Withdrawal\r\n");
-                display.AppendFormat("   From account: {0}\r\n", Account.Number);
-                display.AppendFormat("   Amount: ${0:N2}\r\n", Amount);
+                if (detailedView)
+                {
+                    display.AppendFormat("   From account: {0}\r\n", Account.Number);
+                    display.AppendFormat("   Amount: ${0:N2}\r\n", Amount);
+                }
             }
             return display.ToString();
         }

@@ -54,7 +54,7 @@ namespace Comp2614Assignment4
         }
     
 
-        public override string Print()
+        public override string Print(bool detailedView)
         {
             StringBuilder display = new StringBuilder(1000);
             {
@@ -65,8 +65,11 @@ namespace Comp2614Assignment4
                     display.Append(" [Pending]");
                 }
                 display.Append("\r\n");
-                display.AppendFormat("   To account: {0}\r\n", Account.Number);
-                display.AppendFormat("   Amount: ${0:N2}\r\n", Amount);
+                if (detailedView)
+                {
+                    display.AppendFormat("   To account: {0}\r\n", Account.Number);
+                    display.AppendFormat("   Amount: ${0:N2}\r\n", Amount);
+                }
             }
             return display.ToString();
         }

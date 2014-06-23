@@ -66,9 +66,9 @@ namespace Comp2614Assignment4
             transactions.Add(newTransaction);
         }
 
-        public string PrintTransactions()
+        public string PrintTransactions(bool detailedView)
         {
-            return transactions.Print();
+            return transactions.Print(detailedView);
         }
 
         public bool ProcessTransactions()

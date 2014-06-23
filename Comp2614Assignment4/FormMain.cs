@@ -175,9 +175,13 @@ namespace Comp2614Assignment4
 
         private void updateHistoryDisplay()
         {
+           // bool detailedView = history.CheckBoxDetails;
+
+
             if (history != null)
             {
-                history.History = selectedCustomer.PrintTransactions();
+               // history.History = selectedCustomer.PrintTransactions(detailedView);
+                history.SelectedCustomer = selectedCustomer;
                 history.UpdateHistory();
             }
         }

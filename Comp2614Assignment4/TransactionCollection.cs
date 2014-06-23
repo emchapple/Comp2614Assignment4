@@ -21,12 +21,12 @@ namespace Comp2614Assignment4
             transactions.Add(newTransaction);
         }
 
-        public string Print()
+        public string Print(bool detailedView)
         {
             string output = "";
             foreach (Transaction transaction in transactions)
             {
-                output += transaction.Print();
+                output += transaction.Print(detailedView);
             }
             return output;
         }

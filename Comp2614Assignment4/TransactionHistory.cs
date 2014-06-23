@@ -13,11 +13,20 @@ namespace Comp2614Assignment4
     public partial class TransactionHistory : Form
     {
         private static TransactionHistory instance;
-        private string history;
-        public string History
+       
+
+        private Customer selectedCustomer;
+        public Customer SelectedCustomer
         {
-            set { history = value; }
+            set
+            {
+                if (value != null)
+                {
+                    selectedCustomer = value;
+                }
+            }
         }
+
 
         private TransactionHistory()
         {
@@ -42,7 +51,8 @@ namespace Comp2614Assignment4
         public void UpdateHistory()
         {
             textBoxHistory.Clear();
-            textBoxHistory.Text = history;
+            bool detailedView = checkBoxDetails.Checked;
+            textBoxHistory.Text = selectedCustomer.PrintTransactions(detailedView);
         }
 
 
@@ -54,6 +64,11 @@ namespace Comp2614Assignment4
         private void buttonClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void checkBoxDetails_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateHistory();
         }
 
 

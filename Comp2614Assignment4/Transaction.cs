@@ -48,7 +48,7 @@ namespace Comp2614Assignment4
             timestamp = DateTime.Now;
         }
 
-        public abstract string Print();
+        public abstract string Print(bool detailedView);
 
 
     }
