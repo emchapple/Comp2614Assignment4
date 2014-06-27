@@ -80,7 +80,7 @@ namespace Comp2614Assignment4
                 accountLine.SubItems.Add(accountBalanceString, accountBalanceColor, SystemColors.Window, listViewAccountsDisplay.Font);
 
                 accountLine.SubItems.Add(Utils.accountCreditDisplay(account));
-                accountLine.SubItems.Add(account.Balance.ToString("N2"));
+                accountLine.SubItems.Add(account.GetAvailableFunds().ToString("N2"));
                 listViewAccountsDisplay.Items.Add(accountLine);
             }
             listViewAccountsDisplay.EndUpdate();
@@ -90,40 +90,35 @@ namespace Comp2614Assignment4
 
         private string getBalanceDisplayString(BankAccount account)
         {
-            string displayString = string.Empty;
-            CreditLine creditLine = account as CreditLine;
-            if (creditLine != null)
-                {
-                    if (creditLine.AmountBorrowed() > 0m)
-                    {
-                        return string.Format("({0})", (creditLine.AmountBorrowed()).ToString("N2"));
-                    }
-                    else
-                    {
-                        decimal valuetodisplay = account.Balance - creditLine.CreditLimit;
-                        return valuetodisplay.ToString("N2");
-                    }
-                   
+            decimal absoluteBalance = Math.Abs(account.Balance);
 
-                }
-                
-              return account.Balance.ToString("N2");
+            string balanceString = absoluteBalance.ToString("N2");
+            if (accountIsOverdrawn(account))
+            {
+               return string.Format("({0})", balanceString);
+            }
+    
+            return balanceString;
              
         }
 
         private Color getBalanceColor(BankAccount account)
         {
-            if (account is CreditLine)
+            if(accountIsOverdrawn(account))
             {
-                CreditLine creditLine = account as CreditLine;
-                if (creditLine.AmountBorrowed() > 0m)
-                {
                     return Color.Red;
 
-                }
             }
+            
             return Color.Black;
 
+        }
+       
+        private bool accountIsOverdrawn(BankAccount account)
+        {
+            CreditLine creditLine = account as CreditLine;
+            return (creditLine != null && creditLine.Balance < 0m);
+            
         }
 
 

@@ -34,7 +34,7 @@ namespace Comp2614Assignment4
             customer.AddBankAccount(savingsAccount);
 
             decimal creditLimit = 10000m;
-            decimal creditLimitBalance = 3456m;
+            decimal creditLimitBalance = -3456m;
             CreditLine creditLineAccount = new CreditLine(creditLimit, creditLimitBalance);
             customer.AddBankAccount(creditLineAccount);
 

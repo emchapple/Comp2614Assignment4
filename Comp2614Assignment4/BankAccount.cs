@@ -27,7 +27,6 @@ namespace Comp2614Assignment4
             get { return balance; }
         }
 
-        protected decimal minimumBalance;
         protected bool active;
         public bool Active
         {
@@ -41,8 +40,7 @@ namespace Comp2614Assignment4
             get { return string.Format("{0} {1}", name, number); }
         }
 
-
-
+   
         public BankAccount(decimal balance)
         {
             this.balance = balance;
@@ -57,17 +55,21 @@ namespace Comp2614Assignment4
             highestAccountNumber = 1000;
         }
 
+        public abstract decimal GetAvailableFunds();
+        
+
 
         public void Deposit(decimal amountToAdd)
         {
-            if (amountToAdd > 0)
-            {
-                balance += amountToAdd;
-            }
+            
+             balance += amountToAdd;
+            
         }
 
-        public abstract void Withdraw(decimal amountToWithdraw);
-       
+        public void Withdraw(decimal amountToWithdraw)
+        {
+            balance -= amountToWithdraw;
+        }
 
         public void TransferTo(BankAccount toAccount, decimal amount)
         {
@@ -79,19 +81,19 @@ namespace Comp2614Assignment4
 
     public class SavingsAccount : BankAccount
     {
+
         public SavingsAccount(decimal balance) : base(balance)
         {
-            minimumBalance = 0m;
             name = "Savings Account";
         }
 
-     
-
-        public override void Withdraw(decimal amount)
+        public override decimal GetAvailableFunds()
         {
-            balance -= amount;
+            return balance;
+
         }
 
+  
     }
 
     public class CreditLine : BankAccount
@@ -102,25 +104,22 @@ namespace Comp2614Assignment4
             get { return creditLimit; }
         }
 
+
         public  CreditLine(decimal creditLimit, decimal balance) : base(balance)
         {
             this.creditLimit = creditLimit;
-            this.minimumBalance = creditLimit *(-1m);
             this.balance = balance;
             name = "Line Of Credit";
         }
 
+        public override decimal GetAvailableFunds()
+        {
+            
+                return balance + creditLimit;
+            
+        }
+
    
-
-        public decimal AmountBorrowed()
-        {
-            return creditLimit - balance;
-        }
-
-        public override void Withdraw(decimal amount)
-        {
-            balance -= amount;
-        }
 
     }
 
