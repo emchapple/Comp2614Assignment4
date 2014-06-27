@@ -100,6 +100,10 @@ namespace Comp2614Assignment4
                     comboBoxAccounts.Items.Add(account);
                 }
             }
+            if (comboBoxAccounts.Items.Count > 0)
+            {
+                comboBoxAccounts.SelectedIndex = 0;
+            }
         }
 
         protected bool validateInput()

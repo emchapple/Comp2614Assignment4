@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Comp2614Assignment4
 {
-    public partial class              FormMain : Form
+    public partial class FormMain : Form
     {
         private Customer selectedCustomer {get;set;}
         private TransactionHistory history;
@@ -50,9 +50,9 @@ namespace Comp2614Assignment4
             listViewAccountsDisplay.FullRowSelect = true;
 
             // column headers
-            listViewAccountsDisplay.Columns.Add("Account Name", 180);
-            listViewAccountsDisplay.Columns.Add("Balance", 150, HorizontalAlignment.Right);
-            listViewAccountsDisplay.Columns.Add("Credit Limit", 150, HorizontalAlignment.Right);
+            listViewAccountsDisplay.Columns.Add("Account Name", 220);
+            listViewAccountsDisplay.Columns.Add("Balance", 140, HorizontalAlignment.Right);
+            listViewAccountsDisplay.Columns.Add("Credit Limit", 140, HorizontalAlignment.Right);
             listViewAccountsDisplay.Columns.Add("Available Funds", -2, HorizontalAlignment.Right);
 
             listViewAccountsDisplay.AllowColumnReorder = true;
@@ -80,7 +80,7 @@ namespace Comp2614Assignment4
                 accountLine.SubItems.Add(accountBalanceString, accountBalanceColor, SystemColors.Window, listViewAccountsDisplay.Font);
 
                 accountLine.SubItems.Add(Utils.accountCreditDisplay(account));
-                accountLine.SubItems.Add(account.GetAvailableFunds().ToString("N2"));
+                accountLine.SubItems.Add(account.Balance.ToString("N2"));
                 listViewAccountsDisplay.Items.Add(accountLine);
             }
             listViewAccountsDisplay.EndUpdate();
@@ -97,6 +97,11 @@ namespace Comp2614Assignment4
                     if (creditLine.AmountBorrowed() > 0m)
                     {
                         return string.Format("({0})", (creditLine.AmountBorrowed()).ToString("N2"));
+                    }
+                    else
+                    {
+                        decimal valuetodisplay = account.Balance - creditLine.CreditLimit;
+                        return valuetodisplay.ToString("N2");
                     }
                    
 
@@ -155,9 +160,10 @@ namespace Comp2614Assignment4
             DialogResult result = dlg.DialogResult;
             if (result == DialogResult.OK)
             {
-                updateHistoryDisplay();
-                populateListView();
+                RefreshScreen();
             }
+            toolStripStatusLabelInfoMessage.Text = string.Empty;
+
         }
 
         private void RefreshScreen()
@@ -175,12 +181,9 @@ namespace Comp2614Assignment4
 
         private void updateHistoryDisplay()
         {
-           // bool detailedView = history.CheckBoxDetails;
-
 
             if (history != null)
             {
-               // history.History = selectedCustomer.PrintTransactions(detailedView);
                 history.SelectedCustomer = selectedCustomer;
                 history.UpdateHistory();
             }
@@ -190,7 +193,7 @@ namespace Comp2614Assignment4
         private void listViewAccountsDisplay_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
-            labelDebug.Text = e.Cancel.ToString();
+        //    labelDebug.Text = e.Cancel.ToString();
             e.NewWidth = listViewAccountsDisplay.Columns[e.ColumnIndex].Width;
         }
 

@@ -32,14 +32,14 @@
             this.listViewAccountsDisplay = new System.Windows.Forms.ListView();
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.buttonDeposit = new System.Windows.Forms.Button();
+            this.labelDebug = new System.Windows.Forms.Label();
             this.buttonWithdraw = new System.Windows.Forms.Button();
             this.buttonTransferFunds = new System.Windows.Forms.Button();
             this.buttonTransactionHistory = new System.Windows.Forms.Button();
-            this.labelDebug = new System.Windows.Forms.Label();
             this.statusStripMain = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelInfoMessage = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelDate = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelPadding = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelDate = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerDateDisplay = new System.Windows.Forms.Timer(this.components);
             this.timerProcessTransactions = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanelMain.SuspendLayout();
@@ -54,7 +54,7 @@
             this.listViewAccountsDisplay.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewAccountsDisplay.Location = new System.Drawing.Point(12, 13);
             this.listViewAccountsDisplay.Name = "listViewAccountsDisplay";
-            this.listViewAccountsDisplay.Size = new System.Drawing.Size(659, 117);
+            this.listViewAccountsDisplay.Size = new System.Drawing.Size(660, 94);
             this.listViewAccountsDisplay.TabIndex = 0;
             this.listViewAccountsDisplay.UseCompatibleStateImageBehavior = false;
             this.listViewAccountsDisplay.View = System.Windows.Forms.View.Details;
@@ -77,13 +77,13 @@
             this.tableLayoutPanelMain.Controls.Add(this.buttonWithdraw, 2, 0);
             this.tableLayoutPanelMain.Controls.Add(this.buttonTransferFunds, 4, 0);
             this.tableLayoutPanelMain.Controls.Add(this.buttonTransactionHistory, 4, 2);
-            this.tableLayoutPanelMain.Location = new System.Drawing.Point(12, 136);
+            this.tableLayoutPanelMain.Location = new System.Drawing.Point(12, 128);
             this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
             this.tableLayoutPanelMain.RowCount = 3;
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanelMain.Size = new System.Drawing.Size(659, 89);
+            this.tableLayoutPanelMain.Size = new System.Drawing.Size(660, 82);
             this.tableLayoutPanelMain.TabIndex = 1;
             // 
             // buttonDeposit
@@ -92,19 +92,28 @@
             this.buttonDeposit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDeposit.Location = new System.Drawing.Point(3, 3);
             this.buttonDeposit.Name = "buttonDeposit";
-            this.buttonDeposit.Size = new System.Drawing.Size(158, 29);
+            this.buttonDeposit.Size = new System.Drawing.Size(159, 26);
             this.buttonDeposit.TabIndex = 0;
             this.buttonDeposit.Text = "Deposit";
             this.buttonDeposit.UseVisualStyleBackColor = true;
             this.buttonDeposit.Click += new System.EventHandler(this.buttonDeposit_Click);
             // 
+            // labelDebug
+            // 
+            this.labelDebug.AutoSize = true;
+            this.labelDebug.Location = new System.Drawing.Point(3, 48);
+            this.labelDebug.Name = "labelDebug";
+            this.labelDebug.Size = new System.Drawing.Size(51, 13);
+            this.labelDebug.TabIndex = 2;
+            this.labelDebug.Text = "<Debug>";
+            // 
             // buttonWithdraw
             // 
             this.buttonWithdraw.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonWithdraw.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonWithdraw.Location = new System.Drawing.Point(249, 3);
+            this.buttonWithdraw.Location = new System.Drawing.Point(250, 3);
             this.buttonWithdraw.Name = "buttonWithdraw";
-            this.buttonWithdraw.Size = new System.Drawing.Size(158, 29);
+            this.buttonWithdraw.Size = new System.Drawing.Size(159, 26);
             this.buttonWithdraw.TabIndex = 1;
             this.buttonWithdraw.Text = "Withdraw";
             this.buttonWithdraw.UseVisualStyleBackColor = true;
@@ -114,9 +123,9 @@
             // 
             this.buttonTransferFunds.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonTransferFunds.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTransferFunds.Location = new System.Drawing.Point(495, 3);
+            this.buttonTransferFunds.Location = new System.Drawing.Point(497, 3);
             this.buttonTransferFunds.Name = "buttonTransferFunds";
-            this.buttonTransferFunds.Size = new System.Drawing.Size(161, 29);
+            this.buttonTransferFunds.Size = new System.Drawing.Size(160, 26);
             this.buttonTransferFunds.TabIndex = 2;
             this.buttonTransferFunds.Text = "Transfer Funds";
             this.buttonTransferFunds.UseVisualStyleBackColor = true;
@@ -126,22 +135,13 @@
             // 
             this.buttonTransactionHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonTransactionHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTransactionHistory.Location = new System.Drawing.Point(495, 55);
+            this.buttonTransactionHistory.Location = new System.Drawing.Point(497, 51);
             this.buttonTransactionHistory.Name = "buttonTransactionHistory";
-            this.buttonTransactionHistory.Size = new System.Drawing.Size(161, 31);
+            this.buttonTransactionHistory.Size = new System.Drawing.Size(160, 28);
             this.buttonTransactionHistory.TabIndex = 3;
             this.buttonTransactionHistory.Text = "Transaction History";
             this.buttonTransactionHistory.UseVisualStyleBackColor = true;
             this.buttonTransactionHistory.Click += new System.EventHandler(this.buttonTransactionHistory_Click);
-            // 
-            // labelDebug
-            // 
-            this.labelDebug.AutoSize = true;
-            this.labelDebug.Location = new System.Drawing.Point(3, 52);
-            this.labelDebug.Name = "labelDebug";
-            this.labelDebug.Size = new System.Drawing.Size(51, 13);
-            this.labelDebug.TabIndex = 2;
-            this.labelDebug.Text = "<Debug>";
             // 
             // statusStripMain
             // 
@@ -149,9 +149,9 @@
             this.toolStripStatusLabelInfoMessage,
             this.toolStripStatusLabelPadding,
             this.toolStripStatusLabelDate});
-            this.statusStripMain.Location = new System.Drawing.Point(0, 238);
+            this.statusStripMain.Location = new System.Drawing.Point(0, 223);
             this.statusStripMain.Name = "statusStripMain";
-            this.statusStripMain.Size = new System.Drawing.Size(683, 22);
+            this.statusStripMain.Size = new System.Drawing.Size(684, 22);
             this.statusStripMain.SizingGrip = false;
             this.statusStripMain.TabIndex = 3;
             // 
@@ -161,19 +161,19 @@
             this.toolStripStatusLabelInfoMessage.Size = new System.Drawing.Size(96, 17);
             this.toolStripStatusLabelInfoMessage.Text = "< Info Message>";
             // 
-            // toolStripStatusLabelDate
-            // 
-            this.toolStripStatusLabelDate.Name = "toolStripStatusLabelDate";
-            this.toolStripStatusLabelDate.Size = new System.Drawing.Size(191, 17);
-            this.toolStripStatusLabelDate.Spring = true;
-            this.toolStripStatusLabelDate.Text = "< Date Display>";
-            this.toolStripStatusLabelDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // toolStripStatusLabelPadding
             // 
             this.toolStripStatusLabelPadding.AutoSize = false;
             this.toolStripStatusLabelPadding.Name = "toolStripStatusLabelPadding";
             this.toolStripStatusLabelPadding.Size = new System.Drawing.Size(350, 17);
+            // 
+            // toolStripStatusLabelDate
+            // 
+            this.toolStripStatusLabelDate.Name = "toolStripStatusLabelDate";
+            this.toolStripStatusLabelDate.Size = new System.Drawing.Size(222, 17);
+            this.toolStripStatusLabelDate.Spring = true;
+            this.toolStripStatusLabelDate.Text = "< Date Display>";
+            this.toolStripStatusLabelDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // timerDateDisplay
             // 
@@ -191,7 +191,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 260);
+            this.ClientSize = new System.Drawing.Size(684, 245);
             this.Controls.Add(this.statusStripMain);
             this.Controls.Add(this.tableLayoutPanelMain);
             this.Controls.Add(this.listViewAccountsDisplay);

@@ -26,7 +26,7 @@ namespace Comp2614Assignment4
         public override void DoTransaction()
         {
             validateBasics();
-            if (Account.GetAvailableFunds() < Amount)
+            if (Account.Balance < Amount)
             {
                 throw new NoSufficientFundsException(Account, Amount);
             }

@@ -39,7 +39,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxHistory.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxHistory.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxHistory.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxHistory.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBoxHistory.Location = new System.Drawing.Point(0, 0);
             this.textBoxHistory.Multiline = true;
             this.textBoxHistory.Name = "textBoxHistory";
@@ -47,6 +49,7 @@
             this.textBoxHistory.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxHistory.Size = new System.Drawing.Size(326, 503);
             this.textBoxHistory.TabIndex = 0;
+            this.textBoxHistory.Text = "<None>";
             // 
             // buttonClose
             // 

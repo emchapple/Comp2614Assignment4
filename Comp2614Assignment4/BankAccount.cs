@@ -57,7 +57,6 @@ namespace Comp2614Assignment4
             highestAccountNumber = 1000;
         }
 
-        public abstract decimal GetAvailableFunds();
 
         public void Deposit(decimal amountToAdd)
         {
@@ -70,21 +69,13 @@ namespace Comp2614Assignment4
         public abstract void Withdraw(decimal amountToWithdraw);
        
 
-        //fixme, do we need more validation at this stage?
-        private bool withdrawalAmountIsValid(decimal amount)
-        {
-            return amount > 0;
-        }
-
         public void TransferTo(BankAccount toAccount, decimal amount)
         {
             Withdraw(amount);
-            toAccount.Deposit(amount);
-           
+            toAccount.Deposit(amount);    
         }
-
-
     }
+
 
     public class SavingsAccount : BankAccount
     {
@@ -94,10 +85,7 @@ namespace Comp2614Assignment4
             name = "Savings Account";
         }
 
-        public override decimal GetAvailableFunds()
-        {
-            return balance;
-        }
+     
 
         public override void Withdraw(decimal amount)
         {
@@ -122,17 +110,13 @@ namespace Comp2614Assignment4
             name = "Line Of Credit";
         }
 
-        public override decimal GetAvailableFunds()
-        {
-            return balance;
-        }
+   
 
         public decimal AmountBorrowed()
         {
             return creditLimit - balance;
         }
 
-        //for a line of credit, the balance actually represents how much money has been borrowed, not available.
         public override void Withdraw(decimal amount)
         {
             balance -= amount;

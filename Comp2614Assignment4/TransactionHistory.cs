@@ -53,6 +53,9 @@ namespace Comp2614Assignment4
             textBoxHistory.Clear();
             bool detailedView = checkBoxDetails.Checked;
             textBoxHistory.Text = selectedCustomer.PrintTransactions(detailedView);
+            textBoxHistory.SelectionLength = textBoxHistory.Text.Length;
+            textBoxHistory.DeselectAll();
+            buttonClose.Select();
         }
 
 
