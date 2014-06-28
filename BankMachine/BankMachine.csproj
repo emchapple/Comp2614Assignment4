@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankAccount.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="BankAccountCollection.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="DepositTransaction.cs" />
     <Compile Include="Exceptions.cs" />
@@ -48,7 +48,6 @@
     <Compile Include="Transaction.cs" />
     <Compile Include="TransactionCollection.cs" />
     <Compile Include="TransferFundsTransaction.cs" />
-    <Compile Include="Utils.cs" />
     <Compile Include="WithdrawalTransaction.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

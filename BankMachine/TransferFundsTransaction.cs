@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace BankMachine
 {
+    // TransferFundsTransaction is a WithdrawalTransaction that also deposits the amount to another account.
+    // ToAccount is the account that the funds will be transferred to.
+    // The from account is the account inherited from the WithdrawalTransaction.
+
     public class TransferFundsTransaction : WithdrawalTransaction
     {
         public BankAccount ToAccount{get; set;}
@@ -13,9 +17,10 @@ namespace BankMachine
         public TransferFundsTransaction()
         {
             setTimeStampToNow();
+            name = "Transfer Funds";
         }
 
-        public void checkAccounts()
+        public void validateAccounts()
         {
             if(ToAccount == Account)
             {
@@ -26,44 +31,22 @@ namespace BankMachine
         public override void DoTransaction()
         {
             validateBasics();
-            if (Account.Balance < Amount)
-            {
-                throw new NoSufficientFundsException(Account, Amount);
-            }
-            else
-            {
-                checkAccounts();
+            validateFunds();
+            validateAccounts();
               
-                Account.TransferTo(ToAccount, Amount);
-                this.Status = TransactionStatus.Complete;
-            }
-
+            Account.TransferTo(ToAccount, Amount);
+            this.Status = TransactionStatus.Complete;
+    
         }
 
-        public override bool Process()
+
+
+        public override void AppendDetails(StringBuilder display)
         {
-            return false;
+            display.AppendFormat("   From account: {0}\r\n", Account.Number);
+            display.AppendFormat("   To account: {0}\r\n", ToAccount.Number);
+            display.AppendFormat("   Amount: ${0:N2}\r\n", Amount);
         }
-   
-
-        public override string Print(bool detailedView)
-        {
-            StringBuilder display = new StringBuilder(1000);
-            {
-                display.Append(Timestamp.ToString("d"));
-                display.Append(" Transfer\r\n");
-                if (detailedView)
-                {
-
-                    display.AppendFormat("   From account: {0}\r\n", Account.Number);
-                    display.AppendFormat("   To account: {0}\r\n", ToAccount.Number);
-                    display.AppendFormat("   Amount: ${0:N2}\r\n", Amount);
-                }
-            }
-            return display.ToString();
-        }
-
-
 
     }
 }

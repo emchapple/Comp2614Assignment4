@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BankMachine
 {
+    // Simple class to represent a Bank Customer. The customer has a first name and last name. 
+    // The customer also has a BankAccountCollection that may contain multiple BankAccount objects.
+    // All transactions made on the Customer's BankAccounts are stored in a TransactionCollection.
     public class Customer
     {
         private string firstName;
@@ -36,8 +39,8 @@ namespace BankMachine
 
         }
 
-        private List<BankAccount> accounts;
-        public List<BankAccount> Accounts
+        private BankAccountCollection accounts;
+        public BankAccountCollection Accounts
         {
             get { return accounts; }
         }
@@ -48,7 +51,7 @@ namespace BankMachine
 
         public Customer()
         {
-            accounts = new List<BankAccount>();
+            accounts = new BankAccountCollection();
             transactions = new TransactionCollection();
 
         }

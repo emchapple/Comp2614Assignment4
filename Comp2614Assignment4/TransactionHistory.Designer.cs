@@ -65,6 +65,7 @@
             // 
             // checkBoxDetails
             // 
+            this.checkBoxDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxDetails.AutoSize = true;
             this.checkBoxDetails.Location = new System.Drawing.Point(12, 521);
             this.checkBoxDetails.Name = "checkBoxDetails";

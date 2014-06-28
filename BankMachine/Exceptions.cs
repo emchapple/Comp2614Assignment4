@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BankMachine
 {
+    // Exception class to represent when an account does not have enough funds 
+    // to fulfill the requested Transaction.
+
     public class NoSufficientFundsException : Exception
     {
         private BankAccount account;
@@ -23,6 +26,8 @@ namespace BankMachine
         public decimal TransactionAmount { get { return transactionAmount; } }
     }
 
+    // Exception class to represent when a transaction amount is invalid, for example if it is a negative value
+
     public class InvalidTransactionAmtException : Exception
     {
         private decimal transactionAmount;
@@ -38,6 +43,9 @@ namespace BankMachine
         public decimal TransactionAmount { get { return transactionAmount; } }
     }
 
+    // Exception class to represent the case when the two accounts involved in a transfer
+    // are the same.
+
     public class TransferFundsException : Exception
     {
         private BankAccount fromAccount;
@@ -45,7 +53,7 @@ namespace BankMachine
         private decimal transactionAmount;
 
         public TransferFundsException(BankAccount fromAccount, BankAccount toAccount,  decimal transactionAmount)
-            : base("The two accounts selected for a tranfer must be different.")
+            : base("The two accounts selected for a transfer must be different.")
         {
             this.fromAccount = fromAccount;
             this.toAccount = toAccount;
@@ -57,6 +65,7 @@ namespace BankMachine
         public decimal TransactionAmount { get { return transactionAmount; } }
     }
 
+    // Exception class to represent the case when the requested BankAccount is not acitve.
     public class AccountInactiveException : Exception
     {
         private BankAccount account;

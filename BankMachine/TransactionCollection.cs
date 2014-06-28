@@ -6,27 +6,25 @@ using System.Threading.Tasks;
 
 namespace BankMachine
 {
-    public class TransactionCollection
+    // A class to represent a series of modifications to BankAccount balances.
+    // The Print method prints all the transactions.
+    // The ProcessPendingTransactions method polls all the transactions in the collection
+    // for pending transactions, and processes any found.
+
+    public class TransactionCollection : List<Transaction>
     {
-
-        private List<Transaction> transactions;
-
-        public TransactionCollection()
-        {
-            transactions = new List<Transaction>();
-        }
-
-        public void Add(Transaction newTransaction)
-        {
-            transactions.Add(newTransaction);
-        }
 
         public string Print(bool detailedView)
         {
             string output = "";
-            foreach (Transaction transaction in transactions)
+            foreach (Transaction transaction in this)
             {
                 output += transaction.Print(detailedView);
+            }
+
+            if (this.Count == 0)
+            {
+                return "<None>";
             }
             return output;
         }
@@ -34,9 +32,9 @@ namespace BankMachine
         public bool ProcessPendingTransactions()
         {
             bool changed = false;
-            if (transactions.Count > 0)
+            if (this.Count > 0)
             {
-                foreach (Transaction transaction in transactions)
+                foreach (Transaction transaction in this)
                 {
                     if (transaction.Status == Transaction.TransactionStatus.Pending)
                     {

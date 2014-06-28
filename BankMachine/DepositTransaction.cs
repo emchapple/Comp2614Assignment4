@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace BankMachine
 {
+    // A DepositTransaction is a Transaction that handles depositing money into a BankAccount.
+    // The DepositTransaction is created at the time of the deposit request, but the deposit is not carried out
+    // until a hold period has elapsed.
+
     public class DepositTransaction : Transaction
     {
         private static int DELAY_IN_SECONDS = 30;
@@ -13,6 +17,7 @@ namespace BankMachine
         public DepositTransaction()
         {
             setTimeStampToNow();
+            name = "Deposit";
         }
 
         public DepositTransaction(BankAccount account, decimal amount )
@@ -25,11 +30,8 @@ namespace BankMachine
 
         public override void DoTransaction()
         {
-      
                 validateBasics();
                 this.Status = TransactionStatus.Pending;
-               
-       
         }
 
        
@@ -54,27 +56,11 @@ namespace BankMachine
         }
     
 
-        public override string Print(bool detailedView)
+        public override void AppendDetails(StringBuilder display)
         {
-            StringBuilder display = new StringBuilder(1000);
-            {
-                display.Append(Timestamp.ToString("d"));
-                display.Append(" Deposit");
-                if (Status == TransactionStatus.Pending)
-                {
-                    display.Append(" [Pending]");
-                }
-                display.Append("\r\n");
-                if (detailedView)
-                {
-                    display.AppendFormat("   To account: {0}\r\n", Account.Number);
-                    display.AppendFormat("   Amount: ${0:N2}\r\n", Amount);
-                }
-            }
-            return display.ToString();
+            display.AppendFormat("   To account: {0}\r\n", Account.Number);
+            display.AppendFormat("   Amount: ${0:N2}\r\n", Amount);
         }
-
-
 
      }
 }
