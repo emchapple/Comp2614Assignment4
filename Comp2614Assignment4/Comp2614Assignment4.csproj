@@ -47,17 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BankAccount.cs" />
-    <Compile Include="BankAccountTest.cs" />
-    <Compile Include="Customer.cs" />
     <Compile Include="DepositDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DepositDialog.Designer.cs">
       <DependentUpon>DepositDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="DepositTransaction.cs" />
-    <Compile Include="Exceptions.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,8 +67,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Transaction.cs" />
-    <Compile Include="TransactionCollection.cs" />
     <Compile Include="TransactionHistory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,9 +79,6 @@
     <Compile Include="TransferFundsDialog.Designer.cs">
       <DependentUpon>TransferFundsDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="TransferFundsTransaction.cs" />
-    <Compile Include="Utils.cs" />
-    <Compile Include="WithdrawalTransaction.cs" />
     <EmbeddedResource Include="DepositDialog.resx">
       <DependentUpon>DepositDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +116,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BankMachine\BankMachine.csproj">
+      <Project>{12cda43e-94de-4686-88c9-a14dd34623c6}</Project>
+      <Name>BankMachine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

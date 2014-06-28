@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Comp2614Assignment4
 {
-    class Utils
+    public class Utils
     {
 
 
