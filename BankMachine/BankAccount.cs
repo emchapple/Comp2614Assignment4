@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Comp2614Assignment4
+namespace BankMachine
 {
     public abstract class BankAccount
     {
@@ -40,7 +40,7 @@ namespace Comp2614Assignment4
             get { return string.Format("{0} {1}", name, number); }
         }
 
-   
+
         public BankAccount(decimal balance)
         {
             this.balance = balance;
@@ -56,14 +56,14 @@ namespace Comp2614Assignment4
         }
 
         public abstract decimal GetAvailableFunds();
-        
+
 
 
         public void Deposit(decimal amountToAdd)
         {
-            
-             balance += amountToAdd;
-            
+
+            balance += amountToAdd;
+
         }
 
         public void Withdraw(decimal amountToWithdraw)
@@ -74,7 +74,7 @@ namespace Comp2614Assignment4
         public void TransferTo(BankAccount toAccount, decimal amount)
         {
             Withdraw(amount);
-            toAccount.Deposit(amount);    
+            toAccount.Deposit(amount);
         }
     }
 
@@ -82,7 +82,8 @@ namespace Comp2614Assignment4
     public class SavingsAccount : BankAccount
     {
 
-        public SavingsAccount(decimal balance) : base(balance)
+        public SavingsAccount(decimal balance)
+            : base(balance)
         {
             name = "Savings Account";
         }
@@ -93,7 +94,7 @@ namespace Comp2614Assignment4
 
         }
 
-  
+
     }
 
     public class CreditLine : BankAccount
@@ -105,7 +106,8 @@ namespace Comp2614Assignment4
         }
 
 
-        public  CreditLine(decimal creditLimit, decimal balance) : base(balance)
+        public CreditLine(decimal creditLimit, decimal balance)
+            : base(balance)
         {
             this.creditLimit = creditLimit;
             this.balance = balance;
@@ -114,14 +116,15 @@ namespace Comp2614Assignment4
 
         public override decimal GetAvailableFunds()
         {
-            
-                return balance + creditLimit;
-            
+
+            return balance + creditLimit;
+
         }
 
-   
+
 
     }
+
 
 
 

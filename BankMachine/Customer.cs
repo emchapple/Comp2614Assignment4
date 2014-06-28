@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Comp2614Assignment4
+namespace BankMachine
 {
     public class Customer
     {
