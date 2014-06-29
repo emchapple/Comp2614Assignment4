@@ -10,5 +10,18 @@ namespace BankMachine
     // Its main purpose is to make the syntax nicer at the calling level.
     public class BankAccountCollection : List<BankAccount>
     {
+
+
+        public void ValidateActive()
+        {
+            foreach (BankAccount account in this)
+            {
+                if (account.Active == false)
+                {
+                    throw new AccountInactiveException(account);
+                }
+            }
+        }
+
     }
 }

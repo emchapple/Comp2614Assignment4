@@ -12,20 +12,6 @@ namespace BankMachine
 
     public class TransferFundsTransaction : WithdrawalTransaction
     {
-        private BankAccount toAccount;
-        public BankAccount ToAccount
-        {
-            get
-            { return toAccount; }
-
-            set
-            {
-                if (value != null)
-                {
-                    toAccount = value;
-                }
-            }
-        }
 
         public TransferFundsTransaction()
         {
@@ -35,9 +21,12 @@ namespace BankMachine
 
         public void validateAccounts()
         {
-            if(toAccount == Account)
+            BankAccount fromAccount = Accounts.ElementAt(0);
+            BankAccount toAccount = Accounts.ElementAt(1);
+            if (fromAccount == toAccount)
             {
-                throw new TransferFundsException(Account, toAccount, Amount);
+               
+                throw new TransferFundsException(fromAccount, toAccount, Amount);
             }
         }
 
@@ -47,7 +36,7 @@ namespace BankMachine
             validateFunds();
             validateAccounts();
               
-            Account.TransferTo(toAccount, Amount);
+            Accounts.ElementAt(0).TransferTo(Accounts.ElementAt(1), Amount);
             this.Status = TransactionStatus.Complete;
     
         }

@@ -87,15 +87,16 @@ namespace Comp2614Assignment4
 
         private void AppendDetails(StringBuilder display, Transaction transaction)
         {
-            TransferFundsTransaction transfer = transaction as TransferFundsTransaction;
-            if (transfer == null)
+            BankAccountCollection accounts = transaction.Accounts;
+            if (accounts.Count == 1)
             {
-                display.AppendFormat("   Account: {0}\r\n", transaction.Account.Number);
+                display.AppendFormat("   Account: {0}\r\n", accounts.ElementAt(0).Number);
             }
+
             else
             {
-                display.AppendFormat("   From Account: {0}\r\n", transfer.Account.Number);
-                display.AppendFormat("   To Account: {0}\r\n", transfer.ToAccount.Number);
+                display.AppendFormat("   From Account: {0}\r\n", accounts.ElementAt(0).Number);
+                display.AppendFormat("   To Account: {0}\r\n", accounts.ElementAt(1).Number);
             }
 
             display.AppendFormat("   Amount: {0:N2}\r\n", transaction.Amount);

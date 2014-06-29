@@ -67,7 +67,7 @@ namespace Comp2614Assignment4
                 ListViewItem accountLine = new ListViewItem();
                 accountLine.UseItemStyleForSubItems = false;
                 Color color = listViewAccountsDisplay.ForeColor;
-                accountLine.Text = accountNameAndNumberDisplay(account);
+                accountLine.Text = account.NameAndNumberDisplay;
 
                 string accountBalanceString = getBalanceDisplayString(account);
                 Color accountBalanceColor = getBalanceColor(account);
@@ -81,12 +81,7 @@ namespace Comp2614Assignment4
 
         }
 
-        // Application-specific formatting to display a BankAccount in UI
-        public static string accountNameAndNumberDisplay(BankAccount account)
-        {
-            return string.Format("{0} {1}", account.Name, account.Number);
-        }
-
+      
         // If the account balance is negative (credit line only), display it inside parentheses.
         private string getBalanceDisplayString(BankAccount account)
         {

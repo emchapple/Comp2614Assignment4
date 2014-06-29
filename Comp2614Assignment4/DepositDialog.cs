@@ -161,7 +161,9 @@ namespace Comp2614Assignment4
         {
             if (validateInput())
             {
-                transaction.Account = selectedBankAccount;
+                BankAccountCollection involvedAccounts = new BankAccountCollection();
+                involvedAccounts.Add(selectedBankAccount);
+                transaction.Accounts = involvedAccounts;
                 transaction.Amount = Amount;
 
                 try

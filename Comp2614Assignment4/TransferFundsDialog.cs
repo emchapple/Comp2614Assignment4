@@ -80,10 +80,12 @@ namespace Comp2614Assignment4
 
                 SelectedBankAccount = comboBoxAccounts.SelectedItem as BankAccount;
                 ToAccount = comboBoxToAccounts.SelectedItem as BankAccount;
-                
-                transaction.Account = SelectedBankAccount;
+
+                BankAccountCollection involvedAccounts = new BankAccountCollection();
+                involvedAccounts.Add(SelectedBankAccount);
+                involvedAccounts.Add(ToAccount);
+                transaction.Accounts = involvedAccounts;
                 transaction.Amount = getAmountEntered();
-                transaction.ToAccount = ToAccount;
 
                 try
                 {

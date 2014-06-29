@@ -22,7 +22,8 @@ namespace BankMachine
 
         public DepositTransaction(BankAccount account, decimal amount )
         {
-            this.Account = account;
+            this.Accounts = new BankAccountCollection();
+            Accounts.Add(account);
             this.Amount = amount;
             setTimeStampToNow();
 
@@ -40,7 +41,8 @@ namespace BankMachine
            
             if ( transactionDelayHasElapsed())
             {
-                Account.Deposit(Amount);
+                BankAccount account = Accounts.ElementAt(0);
+                account.Deposit(Amount);
                 this.Status = TransactionStatus.Complete;
                 return true;
             }

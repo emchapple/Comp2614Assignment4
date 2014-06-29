@@ -12,7 +12,9 @@ namespace BankMachine
     // For example, if a hold is to be placed on a deposit transaction, DoTransaction records the transaction
     // request and Process is used to process the transaction once the deposit funds have been verified.
 
-    // Transactions have a timestamp, BankAccount, and the amount of money to be processed.
+    // Transactions have a timestamp, BankAccountCollection, and the amount of money to be processed.
+    // The BankAccountCollection can only have one or two accounts in it. Two is for tranferring, 
+    // deposit and withdrawal only need one.
     // Transactions cannot be carried out on inactive accounts or with negative amounts of money.
     // Transactions must also have a Print method to display the transaction details.
 
@@ -26,20 +28,24 @@ namespace BankMachine
             get { return timestamp; }
         }
 
-        private BankAccount account;
-        public BankAccount Account
+        private BankAccountCollection accounts;
+        public BankAccountCollection Accounts
         {
             get
-            { return account; }
+            {
+                return accounts;
+            }
 
             set
             {
-                if (value != null)
+                if (value != null && value.Count <= 2)
                 {
-                    account = value;
+                    accounts = value;
                 }
             }
         }
+
+   
 
         private decimal amount;
         public decimal Amount
@@ -82,8 +88,6 @@ namespace BankMachine
                 return name;
             }
         }
-
-
  
         public abstract void DoTransaction();
         public abstract bool Process();
@@ -98,10 +102,8 @@ namespace BankMachine
 
         private void validateAcitve()
         {
-            if (account.Active == false)
-            {
-                throw new AccountInactiveException(account);
-            }
+            accounts.ValidateActive();
+          
         }
 
 

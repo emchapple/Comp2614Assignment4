@@ -20,7 +20,8 @@ namespace BankMachine
 
         public WithdrawalTransaction(BankAccount account, decimal amount )
         {
-            this.Account = account;
+            this.Accounts = new BankAccountCollection();
+            Accounts.Add(account);
             this.Amount = amount;
             setTimeStampToNow();
 
@@ -30,7 +31,8 @@ namespace BankMachine
         {
             validateBasics();
             validateFunds();
-            Account.Withdraw(Amount);
+            BankAccount account = Accounts.ElementAt(0);
+            account.Withdraw(Amount);
             this.Status = TransactionStatus.Complete;
         }
             
@@ -38,9 +40,11 @@ namespace BankMachine
 
         protected void validateFunds()
         {
-            if (Account.GetAvailableFunds() < Amount)
+            BankAccount account = Accounts.ElementAt(0);
+
+            if (account.GetAvailableFunds() < Amount)
             {
-                throw new NoSufficientFundsException(Account, Amount);
+                throw new NoSufficientFundsException(account, Amount);
             }
         }
 
