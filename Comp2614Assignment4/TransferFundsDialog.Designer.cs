@@ -40,7 +40,6 @@
             this.comboBoxAccounts.DisplayMember = "NameAndNumberDisplay";
             this.comboBoxAccounts.Location = new System.Drawing.Point(30, 37);
             this.comboBoxAccounts.Size = new System.Drawing.Size(133, 21);
-            this.comboBoxAccounts.TabIndex = 5;
             this.comboBoxAccounts.ValueMember = "NameAndNumberDisplay";
             this.comboBoxAccounts.SelectedIndexChanged += new System.EventHandler(this.comboBoxAccounts_SelectedIndexChanged);
             // 
@@ -48,8 +47,6 @@
             // 
             this.textBoxAmount.Location = new System.Drawing.Point(30, 97);
             this.textBoxAmount.Size = new System.Drawing.Size(100, 20);
-            this.textBoxAmount.TabIndex = 1;
-            this.textBoxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelAccount
             // 
@@ -61,19 +58,16 @@
             // 
             this.labelAmount.Location = new System.Drawing.Point(27, 80);
             this.labelAmount.Size = new System.Drawing.Size(43, 13);
-            this.labelAmount.TabIndex = 0;
             this.labelAmount.Text = "Amount";
             // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(236, 130);
-            this.buttonOK.TabIndex = 2;
+            this.buttonOK.Location = new System.Drawing.Point(252, 110);
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(314, 130);
-            this.buttonCancel.TabIndex = 3;
+            this.buttonCancel.Location = new System.Drawing.Point(330, 110);
             // 
             // labelToAccount
             // 
@@ -102,7 +96,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(402, 161);
+            this.ClientSize = new System.Drawing.Size(403, 141);
             this.Controls.Add(this.comboBoxToAccounts);
             this.Controls.Add(this.labelToAccount);
             this.Name = "TransferFundsDialog";

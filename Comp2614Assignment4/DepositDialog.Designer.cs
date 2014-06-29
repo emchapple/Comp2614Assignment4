@@ -39,11 +39,13 @@
             // 
             // buttonOK
             // 
+            this.buttonOK.Location = new System.Drawing.Point(247, 85);
             this.buttonOK.TabIndex = 2;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // buttonCancel
             // 
+            this.buttonCancel.Location = new System.Drawing.Point(325, 85);
             this.buttonCancel.TabIndex = 3;
             // 
             // comboBoxAccounts
@@ -90,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(402, 140);
+            this.ClientSize = new System.Drawing.Size(402, 119);
             this.Controls.Add(this.labelAmount);
             this.Controls.Add(this.labelAccount);
             this.Controls.Add(this.textBoxAmount);
