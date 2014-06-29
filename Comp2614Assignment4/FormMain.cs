@@ -113,7 +113,7 @@ namespace Comp2614Assignment4
         {
             if(account.AccountIsOverdrawn())
             {
-                    return Color.Red;
+                 return Color.Red;
             }
             return Color.Black;
         }
@@ -124,6 +124,7 @@ namespace Comp2614Assignment4
         {
             toolStripStatusLabelInfoMessage.Text = "Enter a Deposit";
             DepositOrWithdrawDialog depositDlg = new DepositOrWithdrawDialog();
+            depositDlg.Title = "Deposit";
             Transaction transaction = new DepositTransaction();
             doFullTransaction(transaction, depositDlg);
         }
@@ -132,6 +133,7 @@ namespace Comp2614Assignment4
         {
             toolStripStatusLabelInfoMessage.Text = "Enter a Withdrawal";
             DepositOrWithdrawDialog withdrawalDlg = new DepositOrWithdrawDialog();
+            withdrawalDlg.Title = "Withdraw";
             Transaction transaction = new WithdrawalTransaction();
             doFullTransaction(transaction, withdrawalDlg);
         }
@@ -140,6 +142,7 @@ namespace Comp2614Assignment4
         {
             toolStripStatusLabelInfoMessage.Text = "Enter a Transfer";
             DepositOrWithdrawDialog transferDlg = new TransferFundsDialog();
+            transferDlg.Title = "Transfer Funds";
             Transaction transaction = new TransferFundsTransaction();
             doFullTransaction(transaction, transferDlg);
         }
@@ -203,9 +206,7 @@ namespace Comp2614Assignment4
             toolStripStatusLabelDate.Text = DateTime.Now.ToString("dddd, MMMM d, yyyy  h:mm tt");
         }
 
-   
-
-
+        // Check if any transactions have been processed and update screen
         private void timerProcessTransactions_Tick(object sender, EventArgs e)
         {
             bool changed = selectedCustomer.ProcessTransactions();

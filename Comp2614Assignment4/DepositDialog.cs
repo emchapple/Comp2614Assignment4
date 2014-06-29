@@ -79,6 +79,18 @@ namespace Comp2614Assignment4
             }
         }
 
+        private string title;
+        public string Title
+        {
+            set
+            {
+                if (value != string.Empty && value.Trim().Length > 0)
+                {
+                    title = value;
+                }
+            }
+        }
+
 
         public DepositOrWithdrawDialog()
         {
@@ -87,7 +99,7 @@ namespace Comp2614Assignment4
 
         private void DepositOrWithdrawDialog_Load(object sender, EventArgs e)
         {
-            this.Text = "Transaction";
+            this.Text = title;
             populateAccountBox();
             comboBoxAccounts.ValueMember = "NameAndNumberDisplay";
         }

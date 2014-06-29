@@ -47,7 +47,7 @@
             this.textBoxHistory.Name = "textBoxHistory";
             this.textBoxHistory.ReadOnly = true;
             this.textBoxHistory.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxHistory.Size = new System.Drawing.Size(326, 503);
+            this.textBoxHistory.Size = new System.Drawing.Size(318, 479);
             this.textBoxHistory.TabIndex = 0;
             this.textBoxHistory.Text = "<None>";
             // 
@@ -55,7 +55,7 @@
             // 
             this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonClose.Location = new System.Drawing.Point(238, 517);
+            this.buttonClose.Location = new System.Drawing.Point(230, 493);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.TabIndex = 1;
@@ -67,11 +67,11 @@
             // 
             this.checkBoxDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxDetails.AutoSize = true;
-            this.checkBoxDetails.Location = new System.Drawing.Point(12, 521);
+            this.checkBoxDetails.Location = new System.Drawing.Point(12, 497);
             this.checkBoxDetails.Name = "checkBoxDetails";
-            this.checkBoxDetails.Size = new System.Drawing.Size(58, 17);
+            this.checkBoxDetails.Size = new System.Drawing.Size(88, 17);
             this.checkBoxDetails.TabIndex = 2;
-            this.checkBoxDetails.Text = "Details";
+            this.checkBoxDetails.Text = "Show Details";
             this.checkBoxDetails.UseVisualStyleBackColor = true;
             this.checkBoxDetails.CheckedChanged += new System.EventHandler(this.checkBoxDetails_CheckedChanged);
             // 
@@ -80,7 +80,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonClose;
-            this.ClientSize = new System.Drawing.Size(325, 569);
+            this.ClientSize = new System.Drawing.Size(317, 545);
             this.Controls.Add(this.checkBoxDetails);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.textBoxHistory);
