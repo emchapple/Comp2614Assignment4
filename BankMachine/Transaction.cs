@@ -41,8 +41,39 @@ namespace BankMachine
             }
         }
 
-        public decimal Amount { get; set; }
-        public TransactionStatus Status {get; set;}
+        private decimal amount;
+        public decimal Amount
+        {
+            get
+            {
+                return amount;
+            }
+
+            set
+            {
+                if (value != null)
+                {
+                    amount = value;
+                }
+            }
+        }
+
+        private TransactionStatus status;
+        public TransactionStatus Status
+        {
+            get
+            {
+                return status;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    status = value;
+                }
+            }
+        }
+
         protected string name;
         public string Name
         {

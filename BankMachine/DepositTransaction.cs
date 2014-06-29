@@ -30,8 +30,8 @@ namespace BankMachine
 
         public override void DoTransaction()
         {
-                validateBasics();
-                this.Status = TransactionStatus.Pending;
+            validateBasics();
+            this.Status = TransactionStatus.Pending;
         }
 
        

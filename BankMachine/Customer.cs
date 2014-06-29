@@ -17,7 +17,7 @@ namespace BankMachine
             get { return firstName; }
             set
             {
-                if (value != string.Empty && value.Length > 0)
+                if (value != string.Empty && value.Trim().Length > 0)
                 {
                     firstName = value;
                 }
@@ -31,7 +31,7 @@ namespace BankMachine
             get { return lastName; }
             set
             {
-                if (value != string.Empty && value.Length > 0)
+                if (value != string.Empty && value.Trim().Length > 0)
                 {
                     lastName = value;
                 }
