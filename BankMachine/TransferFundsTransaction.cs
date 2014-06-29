@@ -24,8 +24,7 @@ namespace BankMachine
             BankAccount fromAccount = Accounts.ElementAt(0);
             BankAccount toAccount = Accounts.ElementAt(1);
             if (fromAccount == toAccount)
-            {
-               
+            {     
                 throw new TransferFundsException(fromAccount, toAccount, Amount);
             }
         }

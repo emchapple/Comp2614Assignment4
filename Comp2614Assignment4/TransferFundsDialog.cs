@@ -11,6 +11,10 @@ using BankMachine;
 
 namespace Comp2614Assignment4
 {
+    // Dialog class for getting the user to enter information for a funds transfer.
+    // Two accounts must be entered using the comboBoxes. The comboBoxes automatically
+    // upate so that the same account cannot be entered for both source and destination.
+    // Basic validation is also done within the dialog.
     public partial class TransferFundsDialog : DepositOrWithdrawDialog
     {
         private BankAccount toAccount;

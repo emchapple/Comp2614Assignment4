@@ -11,6 +11,10 @@ using BankMachine;
 
 namespace Comp2614Assignment4
 {
+    // Dialog class for getting user input for doing deposits or withdrawals.
+    // The BankAccount involved is chosen with a comboBox.
+    // The amount to deposit or withdraw is entered into a textBox.
+    // Some validation of input is done here in the dialog and reported with the ErrorProvider.
     public partial class DepositOrWithdrawDialog : ModalDialog
     {
         public BankAccountCollection Accounts

@@ -24,8 +24,6 @@ namespace Comp2614Assignment4
     
         private void FormMain_Load(object sender, EventArgs e)
         {
-          
-            labelDebug.Text = string.Empty;
             toolStripStatusLabelInfoMessage.Text = string.Empty;
             setTitleDisplay();
             setupListView();

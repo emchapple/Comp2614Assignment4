@@ -11,7 +11,6 @@ namespace BankMachine
     public class BankAccountCollection : List<BankAccount>
     {
 
-
         public void ValidateActive()
         {
             foreach (BankAccount account in this)

@@ -36,8 +36,7 @@ namespace BankMachine
             this.Status = TransactionStatus.Complete;
         }
             
-        
-
+        //Make sure the account has the required funds.
         protected void validateFunds()
         {
             BankAccount account = Accounts.ElementAt(0);

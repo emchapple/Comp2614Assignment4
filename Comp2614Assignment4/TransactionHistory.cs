@@ -13,6 +13,11 @@ namespace Comp2614Assignment4
 {
     public partial class TransactionHistory : Form
     {
+        // The TransactionHistory is a Singleton form that displays the customer's transactions.
+        // The form is not modal and can be left up while interacting with the main form.
+        // Two display modes: with and without details. Without details, only the date and
+        // transaction type are shown. With details, the accounts and amount involved in the
+        // transaction are also displayed.
         private static TransactionHistory instance;
        
         private Customer selectedCustomer;
@@ -53,7 +58,6 @@ namespace Comp2614Assignment4
             textBoxHistory.Clear();
             bool detailedView = checkBoxDetails.Checked;
             textBoxHistory.Text = PrintTransactions(detailedView);
-
             textBoxHistory.SelectionLength = textBoxHistory.Text.Length;
             textBoxHistory.DeselectAll();
             buttonClose.Select();
@@ -61,6 +65,11 @@ namespace Comp2614Assignment4
 
         private string PrintTransactions(bool detailedView)
         {
+            if (selectedCustomer.Transactions.Count == 0)
+            {
+                return "<none>";
+            }
+
             StringBuilder display = new StringBuilder(1000);
             TransactionCollection transactions = selectedCustomer.Transactions;
             foreach(Transaction transaction in transactions)
@@ -79,8 +88,6 @@ namespace Comp2614Assignment4
                 }
                 display.Append("\r\n");
                 display.Append("\r\n");
-
-
             }
             return display.ToString();
         }

@@ -12,7 +12,7 @@ namespace BankMachine
 
     public class TransactionCollection : List<Transaction>
     {
-
+        //If any transactions are processed, returns true. Otherwise, false.
         public bool ProcessPendingTransactions()
         {
             bool changed = false;

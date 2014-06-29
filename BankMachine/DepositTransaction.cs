@@ -37,8 +37,7 @@ namespace BankMachine
 
        
         public override bool Process()
-        {
-           
+        {      
             if ( transactionDelayHasElapsed())
             {
                 BankAccount account = Accounts.ElementAt(0);

@@ -24,6 +24,9 @@ namespace Comp2614Assignment4
 
         }
 
+        // Seed the program with some sample data.
+        // For a real application, the customer would be created from 
+        // another form and start with zero balances.
         private static Customer createCustomer()
         {
             Customer customer = new Customer();
@@ -42,8 +45,6 @@ namespace Comp2614Assignment4
             decimal savingsAccountBalance2 = 3502m;
             SavingsAccount savingsAccount2 = new SavingsAccount(savingsAccountBalance2);
             customer.AddBankAccount(savingsAccount2);
-
-         
 
             
             return customer;
