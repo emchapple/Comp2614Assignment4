@@ -44,6 +44,14 @@ namespace BankMachine
         public decimal Amount { get; set; }
         public TransactionStatus Status {get; set;}
         protected string name;
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+
 
  
         public abstract void DoTransaction();
@@ -79,32 +87,6 @@ namespace BankMachine
             timestamp = DateTime.Now;
         }
 
-      //  public abstract string Print(bool detailedView);
-        public abstract void AppendDetails(StringBuilder display);
-
-
-        public string Print(bool detailedView)
-        {
-            StringBuilder display = new StringBuilder(1000);
-            {
-                display.Append(timestamp.ToString("d"));
-                
-                display.AppendFormat("  {0}",name);
-                if (Status == TransactionStatus.Pending)
-                {
-                    display.Append(" [Pending]");
-                }
-                if (detailedView)
-                {
-                    display.Append("\r\n");
-                    AppendDetails(display);
-                }
-                display.Append("\r\n");
-                display.Append("\r\n");
-
-
-            }
-            return display.ToString();
-        }
+     
     }
 }

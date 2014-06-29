@@ -41,12 +41,6 @@ namespace BankMachine
 
 
 
-        public override void AppendDetails(StringBuilder display)
-        {
-            display.AppendFormat("   From account: {0}\r\n", Account.Number);
-            display.AppendFormat("   To account: {0}\r\n", ToAccount.Number);
-            display.AppendFormat("   Amount: ${0:N2}\r\n", Amount);
-        }
 
     }
 }

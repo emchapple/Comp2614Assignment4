@@ -46,7 +46,13 @@ namespace BankMachine
         }
 
         private TransactionCollection transactions;
-
+        public TransactionCollection Transactions
+        {
+            get
+            {
+                return transactions;
+            }
+        }
 
 
         public Customer()
@@ -69,10 +75,6 @@ namespace BankMachine
             transactions.Add(newTransaction);
         }
 
-        public string PrintTransactions(bool detailedView)
-        {
-            return transactions.Print(detailedView);
-        }
 
         public bool ProcessTransactions()
         {

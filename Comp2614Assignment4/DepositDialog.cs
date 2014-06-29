@@ -17,7 +17,6 @@ namespace Comp2614Assignment4
         {
             get
             {
-
                 if (selectedCustomer != null)
                 {
                     return selectedCustomer.Accounts;

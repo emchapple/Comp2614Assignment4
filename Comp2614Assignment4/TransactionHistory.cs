@@ -53,10 +53,54 @@ namespace Comp2614Assignment4
         {
             textBoxHistory.Clear();
             bool detailedView = checkBoxDetails.Checked;
-            textBoxHistory.Text = selectedCustomer.PrintTransactions(detailedView);
+         //   textBoxHistory.Text = selectedCustomer.PrintTransactions(detailedView);
+            textBoxHistory.Text = PrintTransactions(detailedView);
+
             textBoxHistory.SelectionLength = textBoxHistory.Text.Length;
             textBoxHistory.DeselectAll();
             buttonClose.Select();
+        }
+
+        private string PrintTransactions(bool detailedView)
+        {
+            StringBuilder display = new StringBuilder(1000);
+            TransactionCollection transactions = selectedCustomer.Transactions;
+            foreach(Transaction transaction in transactions)
+            {
+                display.Append(transaction.Timestamp.ToString("d"));
+                
+                display.AppendFormat("  {0}",transaction.Name);
+                if (transaction.Status == Transaction.TransactionStatus.Pending)
+                {
+                    display.Append(" [Pending]");
+                }
+                if (detailedView)
+                {
+                    display.Append("\r\n");
+                    AppendDetails(display, transaction);
+                }
+                display.Append("\r\n");
+                display.Append("\r\n");
+
+
+            }
+            return display.ToString();
+        }
+
+        private void AppendDetails(StringBuilder display, Transaction transaction)
+        {
+            TransferFundsTransaction transfer = transaction as TransferFundsTransaction;
+            if (transfer == null)
+            {
+                display.AppendFormat("   Account: {0}\r\n", transaction.Account.Number);
+            }
+            else
+            {
+                display.AppendFormat("   From Account: {0}\r\n", transfer.Account.Number);
+                display.AppendFormat("   To Account: {0}\r\n", transfer.ToAccount.Number);
+            }
+
+            display.AppendFormat("   Amount: ${0:N2}\r\n", transaction.Amount);
         }
 
 

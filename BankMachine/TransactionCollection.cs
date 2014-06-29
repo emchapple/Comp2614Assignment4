@@ -14,20 +14,20 @@ namespace BankMachine
     public class TransactionCollection : List<Transaction>
     {
 
-        public string Print(bool detailedView)
-        {
-            string output = "";
-            foreach (Transaction transaction in this)
-            {
-                output += transaction.Print(detailedView);
-            }
+        //public string Print(bool detailedView)
+        //{
+        //    string output = "";
+        //    foreach (Transaction transaction in this)
+        //    {
+        //        output += transaction.Print(detailedView);
+        //    }
 
-            if (this.Count == 0)
-            {
-                return "<None>";
-            }
-            return output;
-        }
+        //    if (this.Count == 0)
+        //    {
+        //        return "<None>";
+        //    }
+        //    return output;
+        //}
 
         public bool ProcessPendingTransactions()
         {

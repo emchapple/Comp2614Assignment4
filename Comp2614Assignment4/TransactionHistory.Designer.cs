@@ -85,6 +85,7 @@
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.textBoxHistory);
             this.Name = "TransactionHistory";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Transaction History";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TransactionHistoryForm_FormClosing);
