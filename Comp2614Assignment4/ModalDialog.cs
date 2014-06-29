@@ -16,10 +16,5 @@ namespace Comp2614Assignment4
         {
             InitializeComponent();
         }
-
-        private void buttonOK_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
