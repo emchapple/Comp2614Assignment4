@@ -38,6 +38,7 @@
             // comboBoxAccounts
             // 
             this.comboBoxAccounts.DisplayMember = "NameAndNumberDisplay";
+            this.errorProviderMain.SetIconPadding(this.comboBoxAccounts, 5);
             this.comboBoxAccounts.Location = new System.Drawing.Point(30, 37);
             this.comboBoxAccounts.Size = new System.Drawing.Size(133, 21);
             this.comboBoxAccounts.ValueMember = "NameAndNumberDisplay";
@@ -45,6 +46,7 @@
             // 
             // textBoxAmount
             // 
+            this.errorProviderMain.SetIconPadding(this.textBoxAmount, 5);
             this.textBoxAmount.Location = new System.Drawing.Point(30, 97);
             this.textBoxAmount.Size = new System.Drawing.Size(100, 20);
             // 
@@ -82,6 +84,7 @@
             // 
             this.comboBoxToAccounts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxToAccounts.FormattingEnabled = true;
+            this.errorProviderMain.SetIconPadding(this.comboBoxToAccounts, 5);
             this.comboBoxToAccounts.Location = new System.Drawing.Point(236, 36);
             this.comboBoxToAccounts.Name = "comboBoxToAccounts";
             this.comboBoxToAccounts.Size = new System.Drawing.Size(136, 21);

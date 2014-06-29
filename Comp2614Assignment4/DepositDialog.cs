@@ -141,6 +141,8 @@ namespace Comp2614Assignment4
             if (amountIsNumeric() == false)
             {
                 errorProviderMain.SetError(textBoxAmount, "Please enter a positive number");
+                textBoxAmount.Focus();
+                textBoxAmount.SelectAll();
                 amountIsValid = false;
             }
             else
@@ -186,7 +188,9 @@ namespace Comp2614Assignment4
                 }
                 catch (Exception ex)
                 {
-                    errorProviderMain.SetError(textBoxAmount, ex.Message); 
+                    errorProviderMain.SetError(textBoxAmount, ex.Message);
+                    textBoxAmount.Focus();
+                    textBoxAmount.SelectAll();
                 }
 
             }

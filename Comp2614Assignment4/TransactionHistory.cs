@@ -90,16 +90,16 @@ namespace Comp2614Assignment4
             BankAccountCollection accounts = transaction.Accounts;
             if (accounts.Count == 1)
             {
-                display.AppendFormat("   Account: {0}\r\n", accounts.ElementAt(0).Number);
+                display.AppendFormat("      Account: {0}\r\n", accounts.ElementAt(0).Number);
             }
 
             else
             {
-                display.AppendFormat("   From Account: {0}\r\n", accounts.ElementAt(0).Number);
-                display.AppendFormat("   To Account: {0}\r\n", accounts.ElementAt(1).Number);
+                display.AppendFormat("      From Account: {0}\r\n", accounts.ElementAt(0).Number);
+                display.AppendFormat("      To Account: {0}\r\n", accounts.ElementAt(1).Number);
             }
 
-            display.AppendFormat("   Amount: {0:N2}\r\n", transaction.Amount);
+            display.AppendFormat("      Amount: {0:N2}\r\n", transaction.Amount);
         }
 
 

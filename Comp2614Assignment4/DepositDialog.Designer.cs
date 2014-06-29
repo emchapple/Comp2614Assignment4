@@ -52,6 +52,7 @@
             // 
             this.comboBoxAccounts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxAccounts.FormattingEnabled = true;
+            this.errorProviderMain.SetIconPadding(this.comboBoxAccounts, 5);
             this.comboBoxAccounts.Location = new System.Drawing.Point(83, 25);
             this.comboBoxAccounts.Name = "comboBoxAccounts";
             this.comboBoxAccounts.Size = new System.Drawing.Size(214, 21);
@@ -59,6 +60,7 @@
             // 
             // textBoxAmount
             // 
+            this.errorProviderMain.SetIconPadding(this.textBoxAmount, 5);
             this.textBoxAmount.Location = new System.Drawing.Point(83, 52);
             this.textBoxAmount.Name = "textBoxAmount";
             this.textBoxAmount.Size = new System.Drawing.Size(133, 20);
