@@ -13,7 +13,21 @@ namespace Comp2614Assignment4
 {
     public partial class TransferFundsDialog : DepositOrWithdrawDialog
     {
-        public BankAccount ToAccount { get; set; }
+        private BankAccount toAccount;
+        public BankAccount ToAccount
+        {
+            get
+            { return toAccount; }
+
+            set
+            {
+                if (value != null)
+                {
+                    toAccount = value;
+                }
+            }
+        }
+
         private TransferFundsTransaction transaction;
 
 

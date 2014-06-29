@@ -15,7 +15,6 @@ namespace Comp2614Assignment4
     {
         private static TransactionHistory instance;
        
-
         private Customer selectedCustomer;
         public Customer SelectedCustomer
         {
@@ -53,7 +52,6 @@ namespace Comp2614Assignment4
         {
             textBoxHistory.Clear();
             bool detailedView = checkBoxDetails.Checked;
-         //   textBoxHistory.Text = selectedCustomer.PrintTransactions(detailedView);
             textBoxHistory.Text = PrintTransactions(detailedView);
 
             textBoxHistory.SelectionLength = textBoxHistory.Text.Length;
@@ -67,7 +65,7 @@ namespace Comp2614Assignment4
             TransactionCollection transactions = selectedCustomer.Transactions;
             foreach(Transaction transaction in transactions)
             {
-                display.Append(transaction.Timestamp.ToString("d"));
+                display.Append(transaction.Timestamp.ToString("yyyy-MM-dd"));
                 
                 display.AppendFormat("  {0}",transaction.Name);
                 if (transaction.Status == Transaction.TransactionStatus.Pending)
@@ -100,7 +98,7 @@ namespace Comp2614Assignment4
                 display.AppendFormat("   To Account: {0}\r\n", transfer.ToAccount.Number);
             }
 
-            display.AppendFormat("   Amount: ${0:N2}\r\n", transaction.Amount);
+            display.AppendFormat("   Amount: {0:N2}\r\n", transaction.Amount);
         }
 
 

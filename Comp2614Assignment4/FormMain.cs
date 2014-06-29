@@ -13,20 +13,15 @@ namespace Comp2614Assignment4
 {
     public partial class FormMain : Form
     {
-        private Customer selectedCustomer {get;set;}
+        private Customer selectedCustomer;
         private TransactionHistory history;
+
         public FormMain(Customer customer)
-      
         {
             this.selectedCustomer = customer;
             InitializeComponent();
         }
-        public FormMain()
-        {
-            InitializeComponent();
-        }
-        
-      
+    
         private void FormMain_Load(object sender, EventArgs e)
         {
           

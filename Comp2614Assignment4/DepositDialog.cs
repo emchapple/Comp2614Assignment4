@@ -13,7 +13,7 @@ namespace Comp2614Assignment4
 {
     public partial class DepositOrWithdrawDialog : ModalDialog
     {
-        public List<BankAccount> Accounts
+        public BankAccountCollection Accounts
         {
             get
             {
@@ -41,6 +41,7 @@ namespace Comp2614Assignment4
                 }
             }
         }
+
         private decimal amount;
         public decimal Amount
         {
